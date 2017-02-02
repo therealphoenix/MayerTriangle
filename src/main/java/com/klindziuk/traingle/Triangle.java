@@ -1,5 +1,8 @@
 package com.klindziuk.traingle;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Triangle {
 		
@@ -10,13 +13,22 @@ public class Triangle {
 	
 	public Triangle() {
 		
-		SideChecker.inputAndCheckSides();
-		this.sideA = SideChecker.sideA;
-		this.sideB = SideChecker.sideB;
-		this.sideC = SideChecker.sideC;
+		inputSides();
+		
 	}
-	
-	
+		
+	public void setSideA(int sideA) {
+		this.sideA = sideA;
+	}
+
+	public void setSideB(int sideB) {
+		this.sideB = sideB;
+	}
+
+	public void setSideC(int sideC) {
+		this.sideC = sideC;
+	}
+
 	public int getSideA() {
 		return sideA;
 	}
@@ -31,6 +43,53 @@ public class Triangle {
 		return sideC;
 	}
 	
+	public void inputSides(){
+		
+      BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		
+		while(true) {
+			
+		System.out.println("Please input sides of triangle, they should be greater then 0 ! ");
+		
+			
+		try	 {
+			
+		System.out.print("Please input first side: ");
+		int a = Integer.parseInt(reader.readLine());
+		
+		System.out.print("Please second side: ");
+		int b = Integer.parseInt(reader.readLine());
+		
+		System.out.print("Please input third side: ");
+		int c = Integer.parseInt(reader.readLine());
+		System.out.println();
+		
+		if((SideChecker.CheckSides(a, b, c) && SideChecker.checkSumOfSides(a,b,c))){
+			System.out.println("Sides are correct, we can create triangle.");
+			
+			this.sideA = a;
+			this.sideB = b;
+			this.sideC = c;
+			
+			reader.close();
+			break;
+		}
+		 System.out.println("Sides are incorrect, we can't create triangle, please try again:");
+		 System.out.println();
+		}
+		
+		 catch (NumberFormatException ex){
+		
+			System.out.println("Only numbers allowed, please try again:");
+		 }
+		
+		catch ( IOException ioex) {
+			ioex.printStackTrace();
+		}
+		}
+		
+		
+	}
 	
 	public boolean isScaleneTriangle(int sideA, int sideB, int sideC) {
 		
