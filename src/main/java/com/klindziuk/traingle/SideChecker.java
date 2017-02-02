@@ -12,6 +12,7 @@ public class SideChecker {
 			
 		else
 			
+						
 			return false;
 				
 	}

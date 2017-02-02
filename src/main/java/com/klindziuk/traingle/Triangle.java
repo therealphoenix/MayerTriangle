@@ -12,11 +12,15 @@ public class Triangle {
 	
 	
 	public Triangle() {
+	
+	int [] sideArray = inputSides();	
+	
 		
-		inputSides();
+		this.sideA = sideArray[0];
+		this.sideB = sideArray[1];
+		this.sideC = sideArray[2];
 		
-	}
-		
+	}		
 	public void setSideA(int sideA) {
 		this.sideA = sideA;
 	}
@@ -43,9 +47,10 @@ public class Triangle {
 		return sideC;
 	}
 	
-	public void inputSides(){
+	public int[] inputSides(){
 		
       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+      int arrayOfsides[] = new int [3];
 		
 		while(true) {
 			
@@ -88,7 +93,7 @@ public class Triangle {
 		}
 		}
 		
-		
+		return arrayOfsides;
 	}
 	
 	public boolean isScaleneTriangle(int sideA, int sideB, int sideC) {
