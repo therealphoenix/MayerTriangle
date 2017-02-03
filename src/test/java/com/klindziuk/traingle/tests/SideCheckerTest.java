@@ -54,7 +54,7 @@ public class SideCheckerTest {
     }
 	
 	@Test
-    public void CheckSumOfSides_MAX_MAX_MAX() {
+    public void CheckSumOfSides_MAX_MAX_MAX_test() {
         
     	assertEquals(false, SideChecker.checkSumOfSides(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
     }
