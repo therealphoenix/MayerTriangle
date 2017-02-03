@@ -26,10 +26,8 @@ public class SingletonRunner {
 				int c = Integer.parseInt(reader.readLine());
 				System.out.println();
 
-				if ((SideChecker.CheckSides(a, b, c) && SideChecker.checkSumOfSides(a, b, c))) {
-					System.out.println("Sides are correct, we can create triangle.");
-
-					SingletonTriangle.init(a, b, c);
+				if (SingletonTriangle.init(a, b, c)){
+					
 					reader.close();
 					break;
 

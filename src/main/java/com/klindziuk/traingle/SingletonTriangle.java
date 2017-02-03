@@ -26,9 +26,16 @@ public class SingletonTriangle {
 		this.sideA = sideC;
 	}
 
-	public static void init(int sideA, int sideB, int sideC) {
+	public static boolean init(int sideA, int sideB, int sideC) {
+		
 		singletonTriangle = null;
-		singletonTriangle = new SingletonTriangle(sideA, sideB, sideC);
+		
+		if((SideChecker.CheckSides(sideA, sideB, sideC) && SideChecker.checkSumOfSides(sideA, sideB, sideC))) {
+			System.out.println("Sides are correct, we can create triangle.");
+				singletonTriangle = new SingletonTriangle(sideA, sideB, sideC);
+				return true;
+		}
+		return false;
 
 	}
 
