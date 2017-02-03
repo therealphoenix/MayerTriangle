@@ -26,14 +26,10 @@ public class SingletonRunner {
 				int c = Integer.parseInt(reader.readLine());
 				System.out.println();
 
-				if (SingletonTriangle.init(a, b, c)){
+				SingletonTriangle.init(a, b, c);
 					
 					reader.close();
 					break;
-
-				}
-				System.out.println("Sides are incorrect, we can't create triangle, please try again:");
-				System.out.println();
 			}
 
 			catch (NumberFormatException ex) {
