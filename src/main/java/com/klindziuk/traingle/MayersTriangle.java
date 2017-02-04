@@ -1,8 +1,8 @@
 package com.klindziuk.traingle;
 
-public class SingletonTriangle {
+public class MayersTriangle {
 
-	private static SingletonTriangle singletonTriangle;
+	private static MayersTriangle mayersTriangle;
 
 	private int sideA;
 	private int sideB;
@@ -20,28 +20,29 @@ public class SingletonTriangle {
 		return sideC;
 	}
 
-	private SingletonTriangle(int sideA, int sideB, int sideC) {
+	private MayersTriangle(int sideA, int sideB, int sideC) {
 		this.sideA = sideA;
 		this.sideA = sideB;
 		this.sideA = sideC;
 	}
 
-	public static void init(int sideA, int sideB, int sideC) throws NumberFormatException {
+	public static void init(int sideA, int sideB, int sideC) throws IllegalArgumentException {
 		
-		singletonTriangle = null;
+		mayersTriangle = null;
 		
 		if((SideChecker.CheckSides(sideA, sideB, sideC) && SideChecker.checkSumOfSides(sideA, sideB, sideC))) {
 			System.out.println("Sides are correct, we can create triangle.");
-				singletonTriangle = new SingletonTriangle(sideA, sideB, sideC);
+				mayersTriangle = new MayersTriangle(sideA, sideB, sideC);
 		}
-				else throw new NumberFormatException();
+				else throw new IllegalArgumentException();
 		}
 		
-	public static SingletonTriangle getInstance() {
-		return singletonTriangle;
+	public static MayersTriangle getInstance() {
+		
+		return mayersTriangle;
 	}
 
-	public boolean isScaleneTriangle(int sideA, int sideB, int sideC) {
+	public boolean isScalene(int sideA, int sideB, int sideC) {
 
 		if (((sideA + sideB) > sideC) && ((sideB + sideC) > sideA) && ((sideA + sideC) > sideB) && (sideA != sideB)
 				&& (sideA != sideC) && (sideB != sideC))
@@ -50,23 +51,27 @@ public class SingletonTriangle {
 
 			System.out.println("Triangle is Scalene and correct.");
 			return true;
+			
 		} else
 
+		{
 			return false;
 	}
-
-	public boolean isEquilateralTriangle(int sideA, int sideB, int sideC) {
+		
+	}
+	public boolean isEquilateral(int sideA, int sideB, int sideC) {
 
 		if ((sideA == sideB) && (sideA == sideC) && (sideB == sideC)) {
 
 			System.out.println("Triangle is Equilateral and correct.");
 			return true;
+			
 		} else
+			
 			return false;
-
 	}
 
-	public boolean isIsoscelesTriangle(int sideA, int sideB, int sideC) {
+	public boolean isIsosceles(int sideA, int sideB, int sideC) {
 
 		if ((sideA == sideB) || (sideB == sideC) || (sideA == sideC)) {
 
@@ -75,15 +80,18 @@ public class SingletonTriangle {
 		}
 
 		else
+			
+		{
 			return false;
-
+	}
+		
 	}
 
-	public void decideTriangleType(SingletonTriangle triangle) {
+	public void decideTriangleType(MayersTriangle triangle) {
 
-		isIsoscelesTriangle(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
-		isEquilateralTriangle(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
-		isScaleneTriangle(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
+		isIsosceles(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
+		isEquilateral(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
+		isScalene(triangle.getSideA(), triangle.getSideB(), triangle.getSideC());
 
 	}
 

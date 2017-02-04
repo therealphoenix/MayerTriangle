@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class SingletonRunner {
+public class MayersRunner {
 
 	public static void main(String[] args) {
 
@@ -26,7 +26,7 @@ public class SingletonRunner {
 				int c = Integer.parseInt(reader.readLine());
 				System.out.println();
 
-				SingletonTriangle.init(a, b, c);
+				MayersTriangle.init(a, b, c);
 					
 					reader.close();
 					break;
@@ -36,6 +36,11 @@ public class SingletonRunner {
 
 				System.out.println("Only numbers allowed, please try again:");
 			}
+			
+			catch (IllegalArgumentException iaex) {
+				
+				System.out.println("Unfortunately we can't create triangle with this sides, please try again");
+			}
 
 			catch (IOException ioex) {
 				ioex.printStackTrace();
@@ -43,7 +48,7 @@ public class SingletonRunner {
 
 		}
 
-		SingletonTriangle triangle = SingletonTriangle.getInstance();
+		MayersTriangle triangle = MayersTriangle.getInstance();
 		triangle.decideTriangleType(triangle);
 
 	}
