@@ -1,5 +1,9 @@
 package com.klindziuk.task;
 
+/*
+ * Модифицируйте код программы так, чтобы параметры командной строки выводились в обратном порядке.
+ */
+
 public class ReversedCommandLine {
 
 	public static void main(String[] args)

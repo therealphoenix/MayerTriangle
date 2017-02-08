@@ -1,5 +1,10 @@
 package com.klindziuk.task;
 
+/*
+ * Напишите «калькулятор», который принимает из командной строки два числа
+ * и операцию ("число операция число") выводит в консоль результат выражения.
+ */
+
 public class CommandLineCalculator {
 
 	public static void main(String[] args) {
@@ -7,8 +12,8 @@ public class CommandLineCalculator {
 		try {
 			/*
 			 * We should wrap our expression in "" because if we use operation
-			 * " * " in command line without "" args[] will be contain all names
-			 * of file in current directory"
+			 * " * " in command line without "" args[] will be contain  names
+			 * of all files in current directory"
 			 * 
 			 */
 			String[] expression = args[0].split(" ");
