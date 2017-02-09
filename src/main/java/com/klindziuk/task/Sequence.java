@@ -11,32 +11,38 @@ public class Sequence {
 
 	public static void main(String[] args) {
 
-		System.out.println(checkSequence(args[0]));
+		try {
+			System.out.println(checkSequence(args[0]));
+
+		}
+
+		catch (NumberFormatException nfex) {
+			System.out.println("Bad Sequence");
+		}
 
 	}
 
 	public static String checkSequence(String number) throws NumberFormatException {
 
 		String result = "";
-				
-			Integer.parseInt(number); // checking String valid data
-			
-			char[] charArray = number.toCharArray();
 
-			for (int j = 0; j < charArray.length - 1; j++) {
+		Integer.parseInt(number); // checking String valid data
 
-				if (charArray[j] > charArray[j + 1]) {
+		char[] charArray = number.toCharArray();
 
-					result = number + " - Sequence is not growing.";
-					break;
-				} else {
+		for (int j = 0; j < charArray.length - 1; j++) {
 
-					result = number + " - Sequence is growing.";
-				}
+			if (charArray[j] > charArray[j + 1]) {
 
+				result = number + " - Sequence is not growing.";
+				break;
+			} else {
+
+				result = number + " - Sequence is growing.";
 			}
 
-		
+		}
+
 		return result;
 	}
 }
