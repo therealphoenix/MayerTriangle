@@ -28,11 +28,10 @@ public class CircleSquare {
 
 class IllegalRadiusException extends Exception {
 
-	 private String exceptionMessage = "Radius sholud be greater then zero";
+	private String exceptionMessage = "Radius sholud be greater then zero";
 
 	public String getExceptionMessage() {
 		return exceptionMessage;
 	}
 
 }
-

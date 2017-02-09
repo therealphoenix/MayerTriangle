@@ -5,10 +5,9 @@ package com.klindziuk.task;
  */
 
 public class News {
-	
+
 	public static final int QUANTITY_NEWS_ON_PAGE = 10;
 
-		
 	public void getPageQuantity(int numberOfNews) throws IllegalQuantityOfNewsException {
 
 		if (numberOfNews <= 0) {
@@ -30,7 +29,7 @@ public class News {
 
 class IllegalQuantityOfNewsException extends Exception {
 
-	 private String exceptionMessage = "Quantity of news sholud be greater then zero";
+	private String exceptionMessage = "Quantity of news sholud be greater then zero";
 
 	public String getExceptionMessage() {
 		return exceptionMessage;

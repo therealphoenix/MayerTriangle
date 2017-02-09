@@ -12,8 +12,8 @@ public class CommandLineCalculator {
 		try {
 			/*
 			 * We should wrap our expression in "" because if we use operation
-			 * " * " in command line without "" args[] will be contain  names
-			 * of all files in current directory"
+			 * " * " in command line without "" args[] will be contain names of
+			 * all files in current directory"
 			 * 
 			 */
 			String[] expression = args[0].split(" ");
@@ -51,16 +51,16 @@ public class CommandLineCalculator {
 
 		}
 
-		 catch (ArrayIndexOutOfBoundsException aiobex) {
+		catch (ArrayIndexOutOfBoundsException aiobex) {
 			System.out.println("Please, put your expression in \" \". ");
 		}
 
-		 catch (NumberFormatException ex) {
+		catch (NumberFormatException ex) {
 			System.out.println("Only numbers allowed");
-			
+
 		} catch (IllegalArgumentException iaex) {
 			System.out.println("To much arguments");
-			
+
 		} catch (UnsupportedOperationException uoex) {
 			System.out.println("Only + - * / operations are allowed");
 		}

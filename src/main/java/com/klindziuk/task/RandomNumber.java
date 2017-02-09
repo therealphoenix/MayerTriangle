@@ -8,24 +8,22 @@ import java.util.Random;
 
 public class RandomNumber {
 
+	public int getRandomNdigitNumber(int numberOfDigits) throws IllegalNumberOfDigitsException {
 
+		if (numberOfDigits <= 0) {
 
-public int getRandomNdigitNumber(int numberOfDigits) throws IllegalNumberOfDigitsException {
+			throw new IllegalNumberOfDigitsException();
 
-	if (numberOfDigits <= 0) {
+		}
+		Random generator = new Random();
 
-		throw new IllegalNumberOfDigitsException();
+		return generator.nextInt((int) Math.pow(10, numberOfDigits));
 
 	}
-	Random generator = new Random();
-
-	return generator.nextInt((int) Math.pow(10, numberOfDigits));
-
 }
-}
+
 class IllegalNumberOfDigitsException extends Exception {
 
-	 
 	private String exceptionMessage = "Quantity of digits should be greater then zero";
 
 	public String getExceptionMessage() {
