@@ -15,11 +15,10 @@ public class Sequence {
 
 	}
 
-	public static String checkSequence(String number) {
+	public static String checkSequence(String number) throws NumberFormatException {
 
 		String result = "";
-		
-		try {
+				
 			Integer.parseInt(number); // checking String valid data
 			
 			char[] charArray = number.toCharArray();
@@ -37,10 +36,7 @@ public class Sequence {
 
 			}
 
-		} catch (NumberFormatException nfex) {
-			System.out.println("Bad Sequence");
-
-		}
+		
 		return result;
 	}
 }
