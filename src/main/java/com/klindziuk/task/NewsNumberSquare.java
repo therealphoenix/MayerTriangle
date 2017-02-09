@@ -11,6 +11,7 @@ package com.klindziuk.task;
 import java.util.Random;
 
 public class NewsNumberSquare {
+	public static final int QUANTITYNEWSONPAGE = 10;
 
 	public static void main(String[] args) {
 
@@ -45,7 +46,7 @@ public class NewsNumberSquare {
 
 	}
 
-	public static void decidePageQuantity(int numberOfNews) {
+	public static void getPageQuantity(int numberOfNews) {
 
 		try {
 			if (numberOfNews <= 0) {
@@ -53,13 +54,13 @@ public class NewsNumberSquare {
 			}
 
 			if (numberOfNews % 10 > 0) {
-				System.out.println("You need " + ((numberOfNews / 10) + 1) + " page(s) ");
+				System.out.println("You need " + ((numberOfNews / QUANTITYNEWSONPAGE ) + 1) + " page(s) ");
 
 			}
 
 			else {
 
-				System.out.println("You need " + (numberOfNews / 10) + " page(s) ");
+				System.out.println("You need " + (numberOfNews / QUANTITYNEWSONPAGE) + " page(s) ");
 			}
 
 		} catch (IllegalArgumentException iaex) {

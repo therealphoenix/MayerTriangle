@@ -15,10 +15,28 @@ public class HTMLtable {
 
 	public static void main(String[] args) throws IOException {
 
-		// for(String s: args)
-		// System.out.println(s);
+		
 		File folder = new File(".");
-		Writer writer = new BufferedWriter(new FileWriter("./HTML.txt"));
+		StringBuilder htmlBuilder = new StringBuilder();
+		
+		htmlBuilder.append("<html>")
+		.append("<body>")
+		.append("<table")
+		.append("<tr>")
+		.append("<th> File </th>")
+		.append("<th> Type </th>")
+		.append("<th> Creation date </th>")
+		.append("<th> Size (in KB) </th>")
+		.append("</tr>")
+	    .append("<br>");
+		String html = htmlBuilder.toString();
+		
+		
+		Writer writer = new BufferedWriter(new FileWriter("./HTML.html"));
+		writer.write(html);
+		htmlBuilder.setLength(0);
+		
+		
 		File[] listOfFiles = folder.listFiles();
 		for (File directoryItem : listOfFiles) {
 			
@@ -29,17 +47,37 @@ public class HTMLtable {
 			String dateOfCreation = DATE_FORMAT.format(creationTime);
 			
 			if (directoryItem.isDirectory()) {
+				htmlBuilder.append("<tr>");
+				htmlBuilder.append("<td>").append(directoryItem.getName()).append("</td>");
+				htmlBuilder.append("<td>").append(" DIR ").append("</td>");
+				htmlBuilder.append("<td>").append(dateOfCreation).append(" ").append("</td>");
+				htmlBuilder.append("<td>").append(folderSize(directoryItem)).append("</td>");
+				htmlBuilder.append("</tr>");
+				htmlBuilder.append("<br>");
+				
+				writer.write(htmlBuilder.toString());
+				htmlBuilder.setLength(0);
+				
 
-				String directory =  directoryItem.getName() + " DIR " +  " " + dateOfCreation + " " + folderSize(directoryItem);
-				writer.write(directory);
-				writer.append("\n");
+
 			}
 			if (directoryItem.isFile()) {
-				String file = directoryItem.getName() + " FILE " + " " + dateOfCreation + " " + directoryItem.length();
-				writer.write(file);
-				writer.append("\n");
+			    htmlBuilder.append("<tr>");
+				htmlBuilder.append("<td>").append(directoryItem.getName()).append("</td>");
+				htmlBuilder.append("<td>").append(" FILE ").append("</td>");
+				htmlBuilder.append("<td>").append(dateOfCreation).append(" ").append("</td>");
+				htmlBuilder.append("<td>").append(directoryItem.length()).append("</td>");
+				htmlBuilder.append("</tr>");
+				htmlBuilder.append("<br>");
+				
+				writer.write(htmlBuilder.toString());
+				htmlBuilder.setLength(0);
 			}
 		}
+		htmlBuilder.append("</table>" +
+		           "</body>" +
+		           "</html>");
+		writer.write(htmlBuilder.toString());
 		writer.close();
 
 	}

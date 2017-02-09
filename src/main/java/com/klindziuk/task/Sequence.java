@@ -11,15 +11,17 @@ public class Sequence {
 
 	public static void main(String[] args) {
 
-		System.out.println(decideSequence(args[0]));
+		System.out.println(checkSequence(args[0]));
 
 	}
 
-	public static String decideSequence(String number) {
+	public static String checkSequence(String number) {
 
 		String result = "";
+		
 		try {
-			int checkNumber = Integer.parseInt(number); // checking String for containing numbers and letters
+			Integer.parseInt(number); // checking String valid data
+			
 			char[] charArray = number.toCharArray();
 
 			for (int j = 0; j < charArray.length - 1; j++) {
@@ -36,7 +38,7 @@ public class Sequence {
 			}
 
 		} catch (NumberFormatException nfex) {
-			System.out.println("Please input number!");
+			System.out.println("Bad Sequence");
 
 		}
 		return result;
