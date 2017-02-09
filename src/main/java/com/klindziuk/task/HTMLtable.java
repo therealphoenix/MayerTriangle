@@ -19,7 +19,9 @@ public class HTMLtable {
 		File folder = new File(".");
 		StringBuilder htmlBuilder = new StringBuilder();
 		
-		htmlBuilder.append("<html>")
+		htmlBuilder.append("--------------------------------------------------")
+		.append("<br>")
+		.append("<html>")
 		.append("<body>")
 		.append("<table")
 		.append("<tr>")
@@ -28,7 +30,9 @@ public class HTMLtable {
 		.append("<th> Creation date </th>")
 		.append("<th> Size (in KB) </th>")
 		.append("</tr>")
-	    .append("<br>");
+	    .append("<br>")
+		.append("--------------------------------------------------")
+		.append("<br>");
 		String html = htmlBuilder.toString();
 		
 		
@@ -76,7 +80,7 @@ public class HTMLtable {
 		}
 		htmlBuilder.append("</table>" +
 		           "</body>" +
-		           "</html>");
+		           "</html>").append("--------------------------------------------------");
 		writer.write(htmlBuilder.toString());
 		writer.close();
 
