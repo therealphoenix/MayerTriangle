@@ -17,25 +17,28 @@ public class Sequence {
 
 	public static String decideSequence(String number) {
 
-		char[] charArray = number.toCharArray();
-
 		String result = "";
+		try {
+			int checkNumber = Integer.parseInt(number); // checking String
+			char[] charArray = number.toCharArray();
 
-		for (int j = 0; j < charArray.length - 1; j++) {
+			for (int j = 0; j < charArray.length - 1; j++) {
 
-			if (charArray[j] > charArray[j + 1]) {
+				if (charArray[j] > charArray[j + 1]) {
 
-				result = number + " - Sequence is not growing.";
-				break;
-			} else {
+					result = number + " - Sequence is not growing.";
+					break;
+				} else {
 
-				result = number + " - Sequence is growing.";
+					result = number + " - Sequence is growing.";
+				}
+
 			}
 
-		}
+		} catch (NumberFormatException nfex) {
+			System.out.println("Please input number!");
 
+		}
 		return result;
 	}
 }
-
-	
