@@ -19,7 +19,7 @@ public class Sequence {
 
 		String result = "";
 		try {
-			int checkNumber = Integer.parseInt(number); // checking String
+			int checkNumber = Integer.parseInt(number); // checking String for containing numbers and letters
 			char[] charArray = number.toCharArray();
 
 			for (int j = 0; j < charArray.length - 1; j++) {

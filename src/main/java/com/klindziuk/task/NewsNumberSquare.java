@@ -14,35 +14,34 @@ public class NewsNumberSquare {
 
 	public static void main(String[] args) {
 
-		decidePageQuantity(0);
-		decidePageQuantity(-1);
-		decidePageQuantity(100);
-		decidePageQuantity(32);
-		System.out.println(getRandomNumber(3));
-		circleSquare(2);
-
+	
 	}
 
-	public static int getRandomNumber(int numberOFDigits) {
+	public static int getRandomNumber(int numberOfDigits) {
+		
+		
+		if(numberOfDigits <= 0){
+			
+			throw new UnsupportedOperationException();
+				
+		}
+			Random generator = new Random();
 
-		Random generator = new Random();
+		return generator.nextInt((int) Math.pow(10, numberOfDigits));
+		
+			}
 
-		return generator.nextInt((int) Math.pow(10, numberOFDigits));
-	}
-
-	public static void circleSquare(double radius) {
-
-		try {
+	public static double circleSquare(double radius) {
+		
+         double result = 0;
+		
 			if (radius <= 0) {
 				throw new IllegalArgumentException();
 			}
 
-			System.out.println(Math.PI * Math.pow(radius, 2));
-		}
-
-		catch (IllegalArgumentException iaex) {
-			System.out.println("Radius should be greater than zero.");
-		}
+			result = (Math.PI * Math.pow(radius, 2));
+			
+		return result;
 
 	}
 
