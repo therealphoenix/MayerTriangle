@@ -36,30 +36,6 @@ public class Sequence {
 
 		return result;
 	}
-
-	// int firstNumber = Integer.parseInt(String.valueOf(array[0]));
-	// int secondNumber = Integer.parseInt(String.valueOf(array[1]));
-	// int preLastNumber = Integer.parseInt(String.valueOf(array[array.length -
-	// 2]));
-	// int lastNumber = Integer.parseInt(String.valueOf(array[array.length -
-	// 1]));
-	//
-	// System.out.println(firstNumber);
-	// System.out.println(secondNumber);
-	// System.out.println(preLastNumber);
-	// System.out.println(lastNumber);
-	//
-	// if((firstNumber < secondNumber) && (lastNumber > preLastNumber)) {
-	//
-	// System.out.println("Sequence is growing");
-	//
-	// }
-	//
-	// else {
-	//
-	// System.out.println ("Sequence is not growing");
-	// }
-	//
-	//
-
 }
+
+	
