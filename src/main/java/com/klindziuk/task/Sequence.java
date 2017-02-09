@@ -8,41 +8,61 @@ package com.klindziuk.task;
  */
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Sequence {
 
 	public static void main(String[] args) {
-		List<Integer> list = new ArrayList<Integer>();
-		list.add(5);
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(99);
+		
 
-		System.out.println(decideSequence(list));
+		System.out.println(decideSequence(args[0]));
 
 	}
 
-	public static String decideSequence(List<Integer> list) {
+	public static String decideSequence(String number) {
+		
+		char[] charArray = number.toCharArray();
+			
+			String result = "";
 
-		String result = "";
+			for (int j = 0; j < charArray.length - 1; j++) {
 
-		for (int i = 0; i < list.size() - 1; i++) {
+				if (charArray[j] > charArray[j+1]) {
 
-			if (list.get(i) > list.get(i + 1)) {
+					result = number + " - Sequence is not growing.";
+					break;
+				} else {
 
-				result = "Sequence is  not growing";
-				break;
-			} else {
+					result = number + " - Sequence is growing.";
+				}
 
-				result = "Sequence is  growing";
 			}
 
-		}
-
-		return result;
+			return result;
+	}
+		
+		
+//		int firstNumber = Integer.parseInt(String.valueOf(array[0]));
+//		int secondNumber = Integer.parseInt(String.valueOf(array[1]));
+//		int preLastNumber = Integer.parseInt(String.valueOf(array[array.length - 2]));
+//		int lastNumber = Integer.parseInt(String.valueOf(array[array.length - 1]));
+//		
+//		System.out.println(firstNumber);
+//		System.out.println(secondNumber);
+//		System.out.println(preLastNumber);
+//		System.out.println(lastNumber);
+//
+//		if((firstNumber < secondNumber) && (lastNumber > preLastNumber)) {
+//
+//			System.out.println("Sequence is growing");
+//				
+//			}
+//		
+//		else {
+//
+//				System.out.println ("Sequence is not  growing");
+//			}
+//
+//		
 
 	}
-}
+
