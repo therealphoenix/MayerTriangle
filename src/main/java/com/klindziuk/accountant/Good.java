@@ -1,6 +1,6 @@
 package com.klindziuk.accountant;
 
-public class Goods {
+public class Good {
 
 	private String type;
 	private String name;
@@ -9,7 +9,7 @@ public class Goods {
 	
 	
 	
-	public Goods(String type, String name, int quantity, double price) {
+	public Good(String type, String name, int quantity, double price) {
 		this.type = type;
 		this.name = name;
 		this.quantity = quantity;
@@ -62,7 +62,7 @@ public class Goods {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Goods other = (Goods) obj;
+		Good other = (Good) obj;
 		if (type == null) {
 			if (other.type != null)
 				return false;
