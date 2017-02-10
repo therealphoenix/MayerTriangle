@@ -1,7 +1,10 @@
 package com.klindziuk.accountant;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Calculator {
@@ -16,7 +19,7 @@ public class Calculator {
 		this.listOfGoods = listOfGoods;
 	}
 
-	public void getQuantityOfTypes(List<Good> listOfGoods) {
+	public int getQuantityOfTypes(List<Good> listOfGoods) {
 
 		Set<String> setOfTypes = new HashSet<>();
 
@@ -24,10 +27,12 @@ public class Calculator {
 			setOfTypes.add(good.getType());
 		}
 
-		System.out.println("Quantity of types is: " + setOfTypes.size());
+		System.out.println("Quantity of types is: " + setOfTypes.size()); // for testing for testing i'll remove it later
+		
+		return setOfTypes.size();
 	}
 
-	public void getQuantityOfAllGoods(List<Good> listOfGoods) {
+	public int getQuantityOfAllGoods(List<Good> listOfGoods) {
 
 		int result = 0;
 
@@ -35,10 +40,12 @@ public class Calculator {
 			result = result + good.getQuantity();
 		}
 
-		System.out.println("Quantity of all goods is: " + result);
+		System.out.println("Quantity of all goods is: " + result); // for testing i'll remove it later
+		
+		return result;
 	}
 
-	public void getAveragepriceOfAllGoods(List<Good> listOfGoods) {
+	public double getAveragepriceOfAllGoods(List<Good> listOfGoods) {
 
 		double sumOfprice = 0;
 		int quantityOfAllgoods = 0;
@@ -49,16 +56,22 @@ public class Calculator {
 		}
 		
 
-		System.out.println("Average price of all goods: " + (sumOfprice / quantityOfAllgoods));
+		System.out.println("Average price of all goods: " + (sumOfprice / quantityOfAllgoods)); // - == -
+		
+		return (sumOfprice / quantityOfAllgoods);
 	}
 
-	public void getAveragepriceForAnyType(List<Good> listOfGoods) {
+	public Map<String,Double> getAveragepriceForAnyType(List<Good> listOfGoods) { // вот здесь надо помучаться и придумать что вернуть, отделив
+																	// бизнес логику от общения с пользователем
 		
 		Set<Good> setOfGoods = new HashSet<>();
+		Map<String,Double> averagePriceMap = new HashMap();
 
 		for (Good good : listOfGoods) {
 			setOfGoods.add(good);
 		}
+		
+		
 		
 		for(Good good : setOfGoods){
 			
@@ -74,11 +87,11 @@ public class Calculator {
 				
 			}
 			
-			System.out.println("Average price for " + good.getType() + ": " + (sumOfPrice / quantityOfAllgoods) );
+			System.out.println("Average price for " + good.getType() + ": " + (sumOfPrice / quantityOfAllgoods) ); // for testing
+			averagePriceMap.put(good.getType(), ( sumOfPrice / quantityOfAllgoods ));
 		}
 
-		
-
+		return averagePriceMap;        
 	}
 
 }

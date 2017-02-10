@@ -5,7 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+/*
+ *  Напишите «небольшую бухгалтерскую программу», принимающую с клавиатуры информацию о товарах 
+ *  (тип, наименование, количество, стоимость одной единицы). При получении некоторой команды 
+ *  (реализуйте на своё усмотрение) программа должна выдать следующую информацию:
+    количество типов товаров;
+• 	общее количество товаров;
+•	 средняя стоимость товара;
+•	 средняя стоимость товара каждого типа.
+ * 
+ * 
+ * 
+ * 
+ */
 
 public class Runner {
 	BufferedReader reader;
@@ -31,11 +44,10 @@ public class Runner {
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		List<Good> listOfGoods = new ArrayList<>();
 
-		
-			while (true) {
-				
-				try {
-					
+		while (true) {
+
+			try {
+
 				System.out.print("Please input type of good or \"exit\" to quit: ");
 				String type = reader.readLine();
 
@@ -53,22 +65,15 @@ public class Runner {
 				listOfGoods.add(good);
 				System.out.println("Good " + name + " successfully added.");
 			}
-				
-		 catch (NumberFormatException nfex) {
-			System.out.println("Bad data.please input numbers");
-		}
-				catch (IOException ioex) {
-					ioex.printStackTrace();
-				}
-			}
 
-		
+			catch (NumberFormatException nfex) {
+				System.out.println("Bad data.For fields \"price\" and \"quantity\" you should input numbers.");
+			} catch (IOException ioex) {
+				ioex.printStackTrace();
+			}
+		}
 
 		return listOfGoods;
 	}
 
-			
-
-	}
-	
-	
+}
