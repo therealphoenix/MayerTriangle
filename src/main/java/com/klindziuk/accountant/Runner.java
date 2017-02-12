@@ -25,7 +25,7 @@ public class Runner {
 
 	public static void main(String[] args) throws IOException {
 
-		Calculator calculator = new Calculator();
+		Warehouse calculator = new Warehouse();
 
 		System.out.println();
 		calculator.setListOfGoods(new Runner().fillData());
