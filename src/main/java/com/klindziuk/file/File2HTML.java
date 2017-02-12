@@ -43,9 +43,9 @@ public class File2HTML {
 		Writer writer = new BufferedWriter(new FileWriter("./HTMLTable.html"));
 
 		StringBuilder builder = new StringBuilder();
-		builder.append(HTML_OPEN).append(BODY_OPEN).append(TABLE_OPEN).append(TR_OPEN).append(TH_OPEN).append("| FILE |")
-				.append(TH_CLOSE).append(TH_OPEN).append(" TYPE |").append(TH_CLOSE).append(TH_OPEN)
-				.append(" CREATION DATE |").append(TH_CLOSE).append(TH_OPEN).append("SIZE(KB) |").append(TH_CLOSE)
+		builder.append(HTML_OPEN).append(BODY_OPEN).append(TABLE_OPEN).append(TR_OPEN).append(TH_OPEN).append("FILE")
+				.append(TH_CLOSE).append(TH_OPEN).append(" TYPE ").append(TH_CLOSE).append(TH_OPEN)
+				.append(" CREATION DATE ").append(TH_CLOSE).append(TH_OPEN).append("SIZE(KB) ").append(TH_CLOSE)
 				.append(TR_CLOSE);
 
 		File[] listOfFiles = folder.listFiles();

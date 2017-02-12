@@ -28,7 +28,7 @@ public class Runner {
 		Calculator calculator = new Calculator();
 
 		System.out.println();
-		calculator.setListOfGoods(new Runner().setData());
+		calculator.setListOfGoods(new Runner().fillData());
 		for (Good g : calculator.getListOfGoods()) {
 			System.out.println(g);
 		}
@@ -40,7 +40,7 @@ public class Runner {
 
 	}
 
-	public List<Good> setData() {
+	public List<Good> fillData() {
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		List<Good> listOfGoods = new ArrayList<>();
 
