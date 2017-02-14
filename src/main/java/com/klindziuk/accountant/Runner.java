@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class Runner {
 	static Warehouse warehouse;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
 
 		menu();
 
@@ -30,7 +30,7 @@ public class Runner {
 	// main menu
 	private static int menu() {
 		warehouse = new Warehouse();
-		PrintHelper printHelper = new PrintHelper();
+		
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -61,24 +61,23 @@ public class Runner {
 				case 1:
 					fillWarehouse();
 					break;
-
 				case 2:
-					printHelper.printListOfAllgoods(warehouse.getListOfGoods());
+					Printhelper.print(warehouse.getListOfGoods());
 					break;
 				case 3:
-					printHelper.printQuantityOfTypes("Quantity of types is: ",
+					Printhelper.print("Quantity of types is: ",
 							warehouse.getQuantityOfTypes(warehouse.getListOfGoods()));
 					break;
 				case 4:
-					printHelper.printQuantityOFAllGoods( "Quantity of all goods is: ",
-							warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()));
+					Printhelper.print(warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()),
+							"Quantity of all goods is: ");
 					break;
 				case 5:
-					printHelper.printAveragePriceOfAllGoods("Average price of all goods: ",
+					Printhelper.print("Average price of all goods: ",
 							warehouse.getAveragepriceOfAllGoods(warehouse.getListOfGoods()));
 					break;
 				case 6:
-					printHelper.printAveragePriceForEachType("Average price for ",
+					Printhelper.print("Average price for ",
 							warehouse.getAveragePriceForEachType(warehouse.getListOfGoods()));
 					break;
 				case 0:
@@ -89,8 +88,6 @@ public class Runner {
 				default:
 					System.out.println("Make valid choice!");
 				}
-			} catch (IllegalArgumentException iaex) {
-				System.out.println("Bad data. Fields \"price\" and \"quantity\" should be greater than zero");
 			}
 
 			catch (NullPointerException npex) {
@@ -121,7 +118,7 @@ public class Runner {
 				System.out.print("Please input quantity of good: ");
 				int quantity = Integer.parseInt(reader.readLine());
 				if (quantity < 0) {
-					throw new IllegalArgumentException();
+					throw new InputMismatchException();
 				}
 				System.out.print("Please input price of good: ");
 				float price = Float.parseFloat(reader.readLine());
@@ -135,11 +132,21 @@ public class Runner {
 
 			catch (NumberFormatException nfex) {
 				System.out.println("Bad data.For fields \"price\" and \"quantity\" you should input numbers.");
-			} catch (IOException ioex) {
+			} catch (IllegalArgumentException iaex) {
+				System.out.println("Bad data. Field \"price\" should be greater than zero");
+			}
+			catch (InputMismatchException iaex) {
+				System.out.println("Bad data. Field \"quantity\"  should be greater than zero");
+			}
+			
+			 catch (IOException ioex) {
 				ioex.printStackTrace();
 			}
-		}
+	}
+}
+	
+		
 
 	}
 
-}
+

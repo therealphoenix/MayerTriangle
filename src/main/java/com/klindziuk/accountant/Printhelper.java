@@ -4,11 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public  class PrintHelper {
+public class Printhelper {
 	public static final String EMPTY_WAREHOUSE_MESSAGE = "\nWarehouse is empty.";
-	
 
-	void printListOfAllgoods(List<Good> warehouseList) {
+	static void print(List<Good> warehouseList) {
 		if (0 == warehouseList.size()) {
 			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
@@ -22,44 +21,43 @@ public  class PrintHelper {
 		}
 	}
 
-	void printQuantityOfTypes(String message, int quantityOFTypes) {
+	static void print(String message, int quantityOFTypes) {
 
 		if (0 == quantityOFTypes) {
 			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
 
 		else {
-			System.out.println(System.getProperty("line.separator") + message + ": " +  + quantityOFTypes);
+			System.out.println(System.getProperty("line.separator") + message + ": "  + quantityOFTypes);
 		}
 
 	}
 
-	void printQuantityOFAllGoods(String message, int quantityOfAllGoods) {
+	static void print(int quantityOfAllGoods, String message) {
 
 		if (0 == quantityOfAllGoods) {
 			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
 
 		else {
-			System.out.println(System.getProperty("line.separator") + message + ": " +  quantityOfAllGoods);
-			
+			System.out.println(System.getProperty("line.separator") + message + ": " + quantityOfAllGoods);
 
 		}
 	}
 
-	void printAveragePriceOfAllGoods(String message, double averagePriceOfAllGoods) {
-		if (0 == averagePriceOfAllGoods)  {
+	static void print(String message, double averagePriceOfAllGoods) {
+		if (0 == averagePriceOfAllGoods) {
 			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
 
 		else {
-			System.out.println(System.getProperty("line.separator") + message + ": " +  averagePriceOfAllGoods);
-			
+			System.out.println(System.getProperty("line.separator") + message + ": " + averagePriceOfAllGoods);
+
 		}
 
 	}
 
-	void printAveragePriceForEachType(String message, Map<String, Float> averagePriceMap) {
+	static void print(String message, Map<String, Float> averagePriceMap) {
 
 		if (0 == averagePriceMap.size()) {
 			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
@@ -69,7 +67,8 @@ public  class PrintHelper {
 
 			for (Entry<String, Float> entry : averagePriceMap.entrySet()) {
 
-				System.out.print(System.getProperty("line.separator") + message + entry.getKey() + ": " + entry.getValue());
+				System.out.print(
+						System.getProperty("line.separator") + message + entry.getKey() + ": " + entry.getValue());
 			}
 		}
 		System.out.println();
