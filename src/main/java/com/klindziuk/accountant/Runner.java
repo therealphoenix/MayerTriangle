@@ -3,9 +3,7 @@ package com.klindziuk.accountant;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -13,9 +11,9 @@ import java.util.Scanner;
  *  (тип, наименование, количество, стоимость одной единицы). При получении некоторой команды 
  *  (реализуйте на своё усмотрение) программа должна выдать следующую информацию:
     количество типов товаров;
-• 	общее количество товаров;
-•	 средняя стоимость товара;
-•	 средняя стоимость товара каждого типа.
+ 	общее количество товаров;
+	 средняя стоимость товара;
+	 средняя стоимость товара каждого типа.
  * 
  * 
  */
@@ -43,7 +41,7 @@ public class Runner {
 
 			System.out.println("Please choose an option :");
 			System.out.println("[1] Add good to warehouse");
-			System.out.println("[2] View all");
+			System.out.println("[2] View all goods");
 			System.out.println("[3] View quantity of types");
 			System.out.println("[4] View quantity of all goods");
 			System.out.println("[5] View average price of all goods");
@@ -68,17 +66,19 @@ public class Runner {
 					warehouseInfo.printListOfAllgoods(warehouse.getListOfGoods());
 					break;
 				case 3:
-					warehouseInfo.printQuantityOfTypes(warehouse.getQuantityOfTypes(warehouse.getListOfGoods()));
+					warehouseInfo.printQuantityOfTypes("Quantity of types is: ",
+							warehouse.getQuantityOfTypes(warehouse.getListOfGoods()));
 					break;
 				case 4:
-					warehouseInfo.printQuantityOFAllGoods(warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()));
+					warehouseInfo.printQuantityOFAllGoods( "Quantity of all goods is: ",
+							warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()));
 					break;
 				case 5:
-					warehouseInfo.printAveragePriceOfAllGoods(
+					warehouseInfo.printAveragePriceOfAllGoods("Average price of all goods: ",
 							warehouse.getAveragepriceOfAllGoods(warehouse.getListOfGoods()));
 					break;
 				case 6:
-					warehouseInfo.printAveragePriceForEachType(
+					warehouseInfo.printAveragePriceForEachType("Average price for ",
 							warehouse.getAveragePriceForEachType(warehouse.getListOfGoods()));
 					break;
 				case 0:
@@ -104,7 +104,6 @@ public class Runner {
 
 	public static void fillWarehouse() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		List<Good> listOfGoods = warehouse.getListOfGoods();
 
 		while (true) {
 
@@ -121,19 +120,16 @@ public class Runner {
 				String name = reader.readLine();
 				System.out.print("Please input quantity of good: ");
 				int quantity = Integer.parseInt(reader.readLine());
-
 				if (quantity < 0) {
 					throw new IllegalArgumentException();
 				}
-
 				System.out.print("Please input price of good: ");
 				float price = Float.parseFloat(reader.readLine());
-
 				if (price < 0) {
 					throw new IllegalArgumentException();
 				}
 				Good good = new Good(type, name, quantity, price);
-				listOfGoods.add(good);
+				warehouse.addGoods(good);
 				System.out.println("Good " + name + " successfully added.");
 			}
 
@@ -144,7 +140,6 @@ public class Runner {
 			}
 		}
 
-		warehouse.setListOfGoods(listOfGoods);
 	}
 
 }

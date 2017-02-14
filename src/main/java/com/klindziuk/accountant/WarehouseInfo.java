@@ -4,75 +4,75 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class WarehouseInfo {
+public  class WarehouseInfo {
+	public static final String EMPTY_WAREHOUSE_MESSAGE = "\nWarehouse is empty.";
 	
+
 	void printListOfAllgoods(List<Good> warehouseList) {
-		if( 0 == warehouseList.size() ) {
+		if (0 == warehouseList.size()) {
 			System.out.println("\nWarehouse is empty.");
 		}
-		
+
 		else {
-		
-		for (Good g : warehouseList) {
-			System.out.println(g);
-		}
-		System.out.println();
-		}
-	}
-	
-	
-	void printQuantityOfTypes(int quantityOFTypes){
-		
-	if( 0 == quantityOFTypes ) {
-		System.out.println("\nWarehouse is empty.");
-	}
-	
-	else {
-	System.out.println("\nQuantity of types is: " + quantityOFTypes);
-	System.out.println();
-	}
-	
-	}
-	void printQuantityOFAllGoods(int quantityOfAllGoods) {
-		
-		if( 0 == quantityOfAllGoods ) {
-			System.out.println("\nWarehouse is empty.");
-		}
-		
-		else {
-		
-		System.out.println("\nQuantity of all goods is: " + quantityOfAllGoods);
-		
+
+			for (Good g : warehouseList) {
+				System.out.println(g);
 			}
-	}
-	
-	void printAveragePriceOfAllGoods(double averagePriceOfAllGoods)
-	{
-		if( 0 == averagePriceOfAllGoods ) {
-			System.out.println("\nWarehouse is empty.");
+			System.out.println();
 		}
-		
-		else {
-		
-		System.out.println("\nAverage price of all goods: " + averagePriceOfAllGoods);
 	}
-	
-	}
-	void printAveragePriceForEachType( Map<String, Float> averagePriceMap) {  
-		
-		if( 0 == averagePriceMap.size() ) {
-			System.out.println("\nWarehouse is empty.");
+
+	void printQuantityOfTypes(String message, int quantityOFTypes) {
+
+		if (0 == quantityOFTypes) {
+			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
-		
+
 		else {
-		
-		
-		for(Entry<String, Float> entry : averagePriceMap.entrySet()){
+			System.out.println(System.getProperty("line.separator") + message + ": " +  + quantityOFTypes);
+		}
+
+	}
+
+	void printQuantityOFAllGoods(String message, int quantityOfAllGoods) {
+
+		if (0 == quantityOfAllGoods) {
+			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
+		}
+
+		else {
+			System.out.println(System.getProperty("line.separator") + message + ": " +  quantityOfAllGoods);
 			
-			System.out.print("\nAverage price for " + entry.getKey() + ": " + entry.getValue());
+
 		}
 	}
+
+	void printAveragePriceOfAllGoods(String message, double averagePriceOfAllGoods) {
+		if (0 == averagePriceOfAllGoods)  {
+			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
+		}
+
+		else {
+			System.out.println(System.getProperty("line.separator") + message + ": " +  averagePriceOfAllGoods);
+			
+		}
+
+	}
+
+	void printAveragePriceForEachType(String message, Map<String, Float> averagePriceMap) {
+
+		if (0 == averagePriceMap.size()) {
+			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
+		}
+
+		else {
+
+			for (Entry<String, Float> entry : averagePriceMap.entrySet()) {
+
+				System.out.print(System.getProperty("line.separator") + message + entry.getKey() + ": " + entry.getValue());
+			}
+		}
 		System.out.println();
-	 
+
 	}
 }

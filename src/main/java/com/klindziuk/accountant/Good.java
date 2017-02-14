@@ -6,41 +6,46 @@ public class Good {
 	private String name;
 	private int quantity;
 	private float price;
-	
-	
-	
+
 	public Good(String type, String name, int quantity, float price) {
 		this.type = type;
 		this.name = name;
 		this.quantity = quantity;
 		this.price = price;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 	public float getPrice() {
 		return price;
 	}
+
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Good [type=" + type + ", name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
@@ -71,6 +76,4 @@ public class Good {
 		return true;
 	}
 
-	
-	
 }

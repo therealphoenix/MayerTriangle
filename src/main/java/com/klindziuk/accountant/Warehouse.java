@@ -1,9 +1,5 @@
 package com.klindziuk.accountant;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,23 +8,20 @@ import java.util.Map;
 import java.util.Set;
 
 public class Warehouse {
-	
-	
+
 	private List<Good> listOfGoods;
 
 	public List<Good> getListOfGoods() {
 		return listOfGoods;
 	}
 
-	public void setListOfGoods(List<Good> listOfGoods) {
-		this.listOfGoods = listOfGoods;
+	public void addGoods(Good good) {
+		this.listOfGoods.add(good);
 	}
-	
+
 	public Warehouse() {
 		this.listOfGoods = new ArrayList<>();
 	}
-
-	
 
 	public int getQuantityOfTypes(List<Good> listOfGoods) {
 
@@ -37,16 +30,6 @@ public class Warehouse {
 		for (Good good : listOfGoods) {
 			setOfTypes.add(good.getType());
 		}
-
-	//	System.out.println("Quantity of types is: " + setOfTypes.size()); // for
-																			// testing
-																			// for
-																			// testing
-																			// i'll
-																			// remove
-																			// it
-																			// later
-
 		return setOfTypes.size();
 	}
 
@@ -57,13 +40,6 @@ public class Warehouse {
 		for (Good good : listOfGoods) {
 			result = result + good.getQuantity();
 		}
-
-	//	System.out.println("Quantity of all goods is: " + result); // for
-																	// testing
-																	// i'll
-																	// remove it
-																	// later
-
 		return result;
 	}
 
@@ -71,29 +47,19 @@ public class Warehouse {
 
 		double sumOfprice = 0;
 		int quantityOfAllgoods = 0;
+		
+		if(0 == quantityOfAllgoods ) {
+			return 0;
+		}
 
 		for (Good good : listOfGoods) {
 			sumOfprice = sumOfprice + good.getPrice();
 			quantityOfAllgoods = quantityOfAllgoods + good.getQuantity();
 		}
-
-	//	System.out.println("Average price of all goods: " + (sumOfprice / quantityOfAllgoods)); // -
-																								// ==
-																								// -
-
 		return (sumOfprice / quantityOfAllgoods);
 	}
 
-	public Map<String, Float> getAveragePriceForEachType(List<Good> listOfGoods) { // вот
-																					// здесь
-																					// надо
-																					// помучаться
-																					// и
-																					// придумать
-																					// что
-																					// вернуть,
-																					// отделив
-		// бизнес логику от общения с пользователем
+	public Map<String, Float> getAveragePriceForEachType(List<Good> listOfGoods) {
 
 		Set<Good> setOfGoods = new HashSet<>();
 		Map<String, Float> averagePriceMap = new HashMap<>();
@@ -116,8 +82,6 @@ public class Warehouse {
 
 			}
 
-	//		System.out.println("Average price for " + good.getType() + ": " + (sumOfPrice / quantityOfAllgoods)); // for
-																													// testing
 			averagePriceMap.put(good.getType(), (sumOfPrice / quantityOfAllgoods));
 		}
 
