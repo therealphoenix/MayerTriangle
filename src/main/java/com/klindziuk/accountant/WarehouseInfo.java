@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Printer {
+public class WarehouseInfo {
 	
 	void printListOfAllgoods(List<Good> warehouseList) {
 		if( 0 == warehouseList.size() ) {
