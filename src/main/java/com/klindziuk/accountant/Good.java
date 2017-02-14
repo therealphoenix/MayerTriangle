@@ -5,11 +5,11 @@ public class Good {
 	private String type;
 	private String name;
 	private int quantity;
-	private double price;
+	private float price;
 	
 	
 	
-	public Good(String type, String name, int quantity, double price) {
+	public Good(String type, String name, int quantity, float price) {
 		this.type = type;
 		this.name = name;
 		this.quantity = quantity;
@@ -34,16 +34,16 @@ public class Good {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	
 	@Override
 	public String toString() {
-		return "Goods [type=" + type + ", name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
+		return "Good [type=" + type + ", name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
 	}
 
 	@Override

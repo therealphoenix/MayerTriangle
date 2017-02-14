@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  *  Напишите «небольшую бухгалтерскую программу», принимающую с клавиатуры информацию о товарах 
@@ -16,64 +18,92 @@ import java.util.List;
 •	 средняя стоимость товара каждого типа.
  * 
  * 
- * 
- * 
  */
 
 public class Runner {
-	BufferedReader reader;
+	 
 
 	public static void main(String[] args) throws IOException {
 
-		Warehouse calculator = new Warehouse();
-
-		System.out.println();
-		calculator.setListOfGoods(new Runner().fillData());
-		for (Good g : calculator.getListOfGoods()) {
-			System.out.println(g);
-		}
-
-		calculator.getQuantityOfTypes(calculator.getListOfGoods());
-		calculator.getQuantityOfAllGoods(calculator.getListOfGoods());
-		calculator.getAveragepriceOfAllGoods(calculator.getListOfGoods());
-		calculator.getAveragepriceForAnyType(calculator.getListOfGoods());
+		
+		menu();
 
 	}
 
-	public List<Good> fillData() {
-		reader = new BufferedReader(new InputStreamReader(System.in));
-		List<Good> listOfGoods = new ArrayList<>();
+	// main menu
+	private static int menu() {
+		Warehouse warehouse = new Warehouse();
+		Printer printer = new Printer();
 
-		while (true) {
-
+		Scanner scanner = new Scanner(System.in);
+		
+		int selection = 0;
+		int i = 0;
+		
+		while ( i == 0) {
+			
+			System.out.println("Please choose an option :");
+			System.out.println("[1] Add good to warehouse");
+			System.out.println("[2] View all");
+			System.out.println("[3] View quantity of types");
+			System.out.println("[4] View quantity of all goods");
+			System.out.println("[5] View average price of all goods");
+			System.out.println("[6] View average price for each type of goods");
+			System.out.println("[0] Quit");
+			System.out.print("Choice: ");
+			
 			try {
-
-				System.out.print("Please input type of good or \"exit\" to quit: ");
-				String type = reader.readLine();
-
-				if ("exit".equals(type)) {
-					reader.close();
-					break;
-				}
-				System.out.print("Please input name of good: ");
-				String name = reader.readLine();
-				System.out.print("Please input quantity of good: ");
-				int quantity = Integer.parseInt(reader.readLine());
-				System.out.print("Please input price of good: ");
-				double price = Double.parseDouble(reader.readLine());
-				Good good = new Good(type, name, quantity, price);
-				listOfGoods.add(good);
-				System.out.println("Good " + name + " successfully added.");
+				selection = scanner.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Sorry,only numbers allowed.");
 			}
+			
+	try {		
+			switch (selection) {
+			
 
-			catch (NumberFormatException nfex) {
-				System.out.println("Bad data.For fields \"price\" and \"quantity\" you should input numbers.");
-			} catch (IOException ioex) {
-				ioex.printStackTrace();
+			case 1:
+				warehouse.fillWarehouse();
+				break;
+
+			case 2:
+				printer.printListOfAllgoods(warehouse.getListOfGoods());
+				break;
+			case 3:
+				printer.printQuantityOfTypes(warehouse.getQuantityOfTypes(warehouse.getListOfGoods()));
+				break;
+			case 4:
+				printer.printQuantityOFAllGoods(warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()));
+				break;
+			case 5:
+				printer.printAveragePriceOfAllGoods(warehouse.getAveragepriceOfAllGoods(warehouse.getListOfGoods()));
+				break;
+			case 6:
+				printer.printAveragePriceForEachType(warehouse.getAveragePriceForEachType(warehouse.getListOfGoods()));
+				break;
+			case 0:
+				System.out.println("See you later!");
+				System.exit(0);
+				break;
+
+			default:
+				System.out.println("Make valid choice!");
+			}
+	}
+			catch (IllegalArgumentException iaex) {
+				System.out.println("Bad data. Fields \"price\" and \"quantity\" should be greater than zero");
+			}
+			
+			catch (NullPointerException npex) {
+				System.out.println("Warehouse is empty");
 			}
 		}
-
-		return listOfGoods;
+		scanner.close();
+		return selection;
+			
+	
+		
+		
 	}
 
 }
