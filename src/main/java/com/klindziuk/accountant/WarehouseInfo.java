@@ -58,7 +58,7 @@ public class WarehouseInfo {
 	}
 	
 	}
-	void printAveragePriceForEachType( Map<String, Float> averagePriceMap) {
+	void printAveragePriceForEachType( Map<String, Float> averagePriceMap) {  
 		
 		if( 0 == averagePriceMap.size() ) {
 			System.out.println("\nWarehouse is empty.");
