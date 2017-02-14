@@ -62,22 +62,22 @@ public class Runner {
 					fillWarehouse();
 					break;
 				case 2:
-					Printhelper.print(warehouse.getListOfGoods());
+					PrintHelper.print(warehouse.getListOfGoods());
 					break;
 				case 3:
-					Printhelper.print("Quantity of types is: ",
+					PrintHelper.print("Quantity of types is: ",
 							warehouse.getQuantityOfTypes());
 					break;
 				case 4:
-					Printhelper.print(warehouse.getQuantityOfAllGoods(),
+					PrintHelper.print(warehouse.getQuantityOfAllGoods(),
 							"Quantity of all goods is: ");
 					break;
 				case 5:
-					Printhelper.print("Average price of all goods: ",
+					PrintHelper.print("Average price of all goods: ",
 							warehouse.getAveragepriceOfAllGoods());
 					break;
 				case 6:
-					Printhelper.print("Average price for ",
+					PrintHelper.print("Average price for ",
 							warehouse.getAveragePriceForEachType());
 					break;
 				case 0:

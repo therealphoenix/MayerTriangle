@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Printhelper {
+public class PrintHelper {
 	public static final String EMPTY_WAREHOUSE_MESSAGE = "\nWarehouse is empty.";
 
 	static void print(List<Good> warehouseList) {
