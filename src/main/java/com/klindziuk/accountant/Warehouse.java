@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Warehouse {
 	
-	private BufferedReader reader;
+	
 	private List<Good> listOfGoods;
 
 	public List<Good> getListOfGoods() {
@@ -28,51 +28,7 @@ public class Warehouse {
 		this.listOfGoods = new ArrayList<>();
 	}
 
-	public void fillWarehouse() {
-		reader = new BufferedReader(new InputStreamReader(System.in));
-		
-
-		while (true) {
-
-			try {
-
-				System.out.print("Please input type of good or \"stop\" to end of data input: ");
-				String type = reader.readLine();
-
-				if ("stop".equals(type)) {
-					
-					break;
-				}
-				System.out.print("Please input name of good: ");
-				String name = reader.readLine();
-				System.out.print("Please input quantity of good: ");
-				int quantity = Integer.parseInt(reader.readLine());
-				
-				if(quantity < 0) {
-					throw new IllegalArgumentException();
-				}
-					
-				System.out.print("Please input price of good: ");
-				float price = Float.parseFloat(reader.readLine());
-				
-				if(price < 0) {
-					throw new IllegalArgumentException();
-				}
-				Good good = new Good(type, name, quantity, price);
-				this.listOfGoods.add(good);
-				System.out.println("Good " + name + " successfully added.");
-			}
-
-			catch (NumberFormatException nfex) {
-				System.out.println("Bad data.For fields \"price\" and \"quantity\" you should input numbers.");
-			} catch (IOException ioex) {
-				ioex.printStackTrace();
-			}
-		}
-
-		
-	}
-
+	
 
 	public int getQuantityOfTypes(List<Good> listOfGoods) {
 

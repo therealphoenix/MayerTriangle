@@ -16,7 +16,7 @@ public class File2HTML {
 	public final static String HTML_CLOSE = "</html>";
 	public final static String BODY_OPEN = "<body>";
 	public final static String BODY_CLOSE = "</body>";
-	public final static String TABLE_OPEN = "<table>";
+	public final static String TABLE_OPEN = "<table style=\"background : linear-gradient(to top, #000, #FFF );\">";
 	public final static String TABLE_CLOSE = "</table>";
 	public final static String TR_OPEN = "<tr>";
 	public final static String TR_CLOSE = "</tr>";
@@ -58,24 +58,34 @@ public class File2HTML {
 			String dateOfCreation = DATE_FORMAT.format(creationTime);
 
 			builder.append((TR_OPEN));
+			
+			boolean isItemDir = directoryItem.isDirectory();
+			String type = isItemDir ? " DIR " : " FILE "; 
+			long size = isItemDir ? folderSize(directoryItem) : directoryItem.length();
 
-			if (directoryItem.isDirectory()) {
+			builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
+			builder.append(TD_OPEN).append(type).append(TD_CLOSE);
+			builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
+			builder.append(TD_OPEN).append(size).append(TD_CLOSE);
 
-				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
-				builder.append(TD_OPEN).append(" DIR ").append(TD_CLOSE);
-				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
-				builder.append(TD_OPEN).append(folderSize(directoryItem)).append(TD_CLOSE);
 
-			}
-
-			if (directoryItem.isFile()) {
-
-				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
-				builder.append(TD_OPEN).append(" FILE ").append(TD_CLOSE);
-				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
-				builder.append(TD_OPEN).append(directoryItem.length()).append(TD_CLOSE);
-
-			}
+//			if (directoryItem.isDirectory()) {
+//
+//				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(" DIR ").append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(folderSize(directoryItem)).append(TD_CLOSE);
+//
+//			}
+//
+//			if (directoryItem.isFile()) {
+//
+//				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(" FILE ").append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
+//				builder.append(TD_OPEN).append(directoryItem.length()).append(TD_CLOSE);
+//
+//			}
 			builder.append((TR_CLOSE));
 		}
 
