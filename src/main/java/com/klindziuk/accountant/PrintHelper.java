@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public  class WarehouseInfo {
+public  class PrintHelper {
 	public static final String EMPTY_WAREHOUSE_MESSAGE = "\nWarehouse is empty.";
 	
 
 	void printListOfAllgoods(List<Good> warehouseList) {
 		if (0 == warehouseList.size()) {
-			System.out.println("\nWarehouse is empty.");
+			System.out.println(EMPTY_WAREHOUSE_MESSAGE);
 		}
 
 		else {

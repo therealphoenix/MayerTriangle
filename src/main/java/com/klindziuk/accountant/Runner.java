@@ -30,7 +30,7 @@ public class Runner {
 	// main menu
 	private static int menu() {
 		warehouse = new Warehouse();
-		WarehouseInfo warehouseInfo = new WarehouseInfo();
+		PrintHelper printHelper = new PrintHelper();
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -63,22 +63,22 @@ public class Runner {
 					break;
 
 				case 2:
-					warehouseInfo.printListOfAllgoods(warehouse.getListOfGoods());
+					printHelper.printListOfAllgoods(warehouse.getListOfGoods());
 					break;
 				case 3:
-					warehouseInfo.printQuantityOfTypes("Quantity of types is: ",
+					printHelper.printQuantityOfTypes("Quantity of types is: ",
 							warehouse.getQuantityOfTypes(warehouse.getListOfGoods()));
 					break;
 				case 4:
-					warehouseInfo.printQuantityOFAllGoods( "Quantity of all goods is: ",
+					printHelper.printQuantityOFAllGoods( "Quantity of all goods is: ",
 							warehouse.getQuantityOfAllGoods(warehouse.getListOfGoods()));
 					break;
 				case 5:
-					warehouseInfo.printAveragePriceOfAllGoods("Average price of all goods: ",
+					printHelper.printAveragePriceOfAllGoods("Average price of all goods: ",
 							warehouse.getAveragepriceOfAllGoods(warehouse.getListOfGoods()));
 					break;
 				case 6:
-					warehouseInfo.printAveragePriceForEachType("Average price for ",
+					printHelper.printAveragePriceForEachType("Average price for ",
 							warehouse.getAveragePriceForEachType(warehouse.getListOfGoods()));
 					break;
 				case 0:
