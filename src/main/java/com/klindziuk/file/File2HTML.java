@@ -1,5 +1,6 @@
 package com.klindziuk.file;
 
+import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -69,23 +70,6 @@ public class File2HTML {
 			builder.append(TD_OPEN).append(size).append(TD_CLOSE);
 
 
-//			if (directoryItem.isDirectory()) {
-//
-//				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(" DIR ").append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(folderSize(directoryItem)).append(TD_CLOSE);
-//
-//			}
-//
-//			if (directoryItem.isFile()) {
-//
-//				builder.append(TD_OPEN).append(directoryItem.getName()).append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(" FILE ").append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(dateOfCreation).append(" ").append(TD_CLOSE);
-//				builder.append(TD_OPEN).append(directoryItem.length()).append(TD_CLOSE);
-//
-//			}
 			builder.append((TR_CLOSE));
 		}
 
@@ -94,6 +78,9 @@ public class File2HTML {
 		writer.write(builder.toString());
 
 		writer.close();
+		File htmlFile = new File("HTMLTable.html");
+		Desktop.getDesktop().browse(htmlFile.toURI());
 
 	}
+	
 }
