@@ -21,16 +21,15 @@ import java.util.Scanner;
 public class Runner {
 	static Warehouse warehouse;
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws IOException {
 
 		menu();
 
 	}
 
 	// main menu
-	private static int menu() {
+	private static int menu() throws IOException {
 		warehouse = new Warehouse();
-		
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -65,20 +64,16 @@ public class Runner {
 					PrintHelper.print(warehouse.getListOfGoods());
 					break;
 				case 3:
-					PrintHelper.print("Quantity of types is: ",
-							warehouse.getQuantityOfTypes());
+					PrintHelper.print("Quantity of types is: ", warehouse.getQuantityOfTypes());
 					break;
 				case 4:
-					PrintHelper.print(warehouse.getQuantityOfAllGoods(),
-							"Quantity of all goods is: ");
+					PrintHelper.print(warehouse.getQuantityOfAllGoods(), "Quantity of all goods is: ");
 					break;
 				case 5:
-					PrintHelper.print("Average price of all goods: ",
-							warehouse.getAveragepriceOfAllGoods());
+					PrintHelper.print("Average price of all goods: ", warehouse.getAveragepriceOfAllGoods());
 					break;
 				case 6:
-					PrintHelper.print("Average price for ",
-							warehouse.getAveragePriceForEachType());
+					PrintHelper.print("Average price for ", warehouse.getAveragePriceForEachType());
 					break;
 				case 0:
 					System.out.println("See you later!");
@@ -88,65 +83,141 @@ public class Runner {
 				default:
 					System.out.println("Make valid choice!");
 				}
+
+			} catch (IllegalArgumentException iaex) {
+				System.out.println("Bad data. Field \"quantity\" should be greater than zero");
+			} catch (InputMismatchException iaex) {
+				System.out.println("Bad data. Field \"price\" should be greater than zero");
 			}
 
-			catch (NullPointerException npex) {
-				System.out.println("Warehouse is empty");
-			}
 		}
 		scanner.close();
 		return selection;
 
 	}
 
-	public static void fillWarehouse() {
+	public static void fillWarehouse() throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+		boolean isExit = false;
+
 		while (true) {
+			String type = "";
+			String name = "";
+			int quantity = 0;
+			float price = 0;
+			boolean inputCorrect = false;
 
-			try {
+			// input type
+			do {
+				System.out.print("Input type of good or \"stop\" to end of data input: ");
+				try {
+					type = reader.readLine();
+					inputCorrect = true;
 
-				System.out.print("Please input type of good or \"stop\" to end of data input: ");
-				String type = reader.readLine();
+					if ("stop".equals(type)) {
+						isExit = true;
+						break;
+					}
 
-				if ("stop".equals(type)) {
+				} catch (Exception e) {
+					System.out.println("incorrect input in field \"type\" ");
 
-					break;
 				}
-				System.out.print("Please input name of good: ");
-				String name = reader.readLine();
-				System.out.print("Please input quantity of good: ");
-				int quantity = Integer.parseInt(reader.readLine());
-				if (quantity < 0) {
-					throw new InputMismatchException();
-				}
-				System.out.print("Please input price of good: ");
-				float price = Float.parseFloat(reader.readLine());
-				if (price < 0) {
-					throw new IllegalArgumentException();
-				}
-				Good good = new Good(type, name, quantity, price);
-				warehouse.addGoods(good);
-				System.out.println("Good " + name + " successfully added.");
+			} while (!inputCorrect);
+
+			if (isExit) {
+				break;
 			}
 
-			catch (NumberFormatException nfex) {
-				System.out.println("Bad data.For fields \"price\" and \"quantity\" you should input numbers.");
-			} catch (IllegalArgumentException iaex) {
-				System.out.println("Bad data. Field \"price\" should be greater than zero");
+			// input name
+			do {
+				System.out.print("Please input name of good or \"stop\" to end of data input:  ");
+				try {
+					name = reader.readLine();
+					inputCorrect = true;
+
+					if ("stop".equals(name)) {
+						isExit = true;
+						break;
+					}
+
+				} catch (Exception e) {
+					System.out.println("incorrect input in field \"name\" ");
+
+				}
+
+			} while (!inputCorrect);
+
+			if (isExit) {
+				break;
 			}
-			catch (InputMismatchException iaex) {
-				System.out.println("Bad data. Field \"quantity\"  should be greater than zero");
+
+			// input quantity
+			do {
+				System.out.print("Please input quantity of good or \"stop\" to end of data input:  ");
+				try {
+					String line = reader.readLine();
+					if ("stop".equals(line)) {
+						isExit = true;
+						break;
+					}
+
+					quantity = Integer.parseInt(line);
+					inputCorrect = true;
+
+					if (quantity < 0) {
+						inputCorrect = false;
+						throw new IllegalArgumentException();
+
+					}
+
+				} catch (NumberFormatException ex) {
+					System.out.println("incorrect input in field \"quantiry\" ");
+
+				} catch (IllegalArgumentException iaex) {
+					System.out.println("Bad data. Field \"quantity\" should be greater than zero");
+				}
+
+			} while (!inputCorrect);
+
+			if (isExit) {
+				break;
 			}
-			
-			 catch (IOException ioex) {
-				ioex.printStackTrace();
+
+			do {
+				System.out.print("Please input price of good or \"stop\" to end of data input:  ");
+				try {
+					String line = reader.readLine();
+					if ("stop".equals(line)) {
+						isExit = true;
+						break;
+					}
+
+					price = Float.parseFloat(line);
+					inputCorrect = true;
+
+					if (price < 0) {
+						inputCorrect = false;
+						throw new InputMismatchException();
+					}
+
+				} catch (NumberFormatException ex) {
+					System.out.println("incorrect input in field \"price\" ");
+
+				} catch (InputMismatchException iaex) {
+					System.out.println("Bad data. Field \"price\" should be greater than zero");
+				}
+			} while (!inputCorrect);
+
+			if (isExit) {
+				break;
 			}
+
+			Good good = new Good(type, name, quantity, price);
+			warehouse.addGoods(good);
+			System.out.println("Good " + name + " successfully added.");
+		}
 	}
+
 }
-	
-		
-
-	}
-
-
