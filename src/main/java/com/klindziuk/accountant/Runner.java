@@ -19,17 +19,30 @@ import java.util.Scanner;
  */
 
 public class Runner {
-	static Warehouse warehouse;
+	
+
+private	static Warehouse warehouse;
+private static BufferedReader reader;
+private static Runner runner;
+private	String type;
+private	String name;
+private	int quantity;
+private	float price;
+private	boolean inputCorrect;
+private boolean isExit;
+
 
 	public static void main(String[] args) throws IOException {
 
-		menu();
+		runner = new Runner();	
+		runner.menu();
 
 	}
 
 	// main menu
-	private static int menu() throws IOException {
+	private  int menu() throws IOException {
 		warehouse = new Warehouse();
+		
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -91,128 +104,133 @@ public class Runner {
 
 	}
 
-	public static void fillWarehouse() throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-		boolean isExit = false;
-
+	public  void fillWarehouse() throws IOException {
+		reader = new BufferedReader(new InputStreamReader(System.in));
+		
 		while (true) {
-			String type = "";
-			String name = "";
-			int quantity = 0;
-			float price = 0;
-			boolean inputCorrect = false;
-
-			// input type
-			do {
-				System.out.print("Input type of good or \"stop\" to end of data input: ");
-				try {
-					type = reader.readLine();
-					inputCorrect = true;
-
-					if ("stop".equals(type)) {
-						isExit = true;
-						break;
-					}
-
-				} catch (Exception e) {
-					System.out.println("incorrect input in field \"type\" ");
-
-				}
-			} while (!inputCorrect);
-
-			if (isExit) {
-				break;
-			}
-
-			// input name
-			do {
-				System.out.print("Please input name of good or \"stop\" to end of data input:  ");
-				try {
-					name = reader.readLine();
-					inputCorrect = true;
-
-					if ("stop".equals(name)) {
-						isExit = true;
-						break;
-					}
-
-				} catch (Exception e) {
-					System.out.println("incorrect input in field \"name\" ");
-
-				}
-
-			} while (!inputCorrect);
-
-			if (isExit) {
-				break;
-			}
-
-			// input quantity
-			do {
-				System.out.print("Please input quantity of good or \"stop\" to end of data input:  ");
-				try {
-					String line = reader.readLine();
-					if ("stop".equals(line)) {
-						isExit = true;
-						break;
-					}
-
-					quantity = Integer.parseInt(line);
-					inputCorrect = true;
-
-					if (quantity < 0) {
-						inputCorrect = false;
-						throw new IllegalArgumentException();
-
-					}
-
-				} catch (NumberFormatException ex) {
-					System.out.println("incorrect input in field \"quantiry\" ");
-
-				} catch (IllegalArgumentException iaex) {
-					System.out.println("Bad data. Field \"quantity\" should be greater than zero");
-				}
-
-			} while (!inputCorrect);
-
-			if (isExit) {
-				break;
-			}
-
-			do {
-				System.out.print("Please input price of good or \"stop\" to end of data input:  ");
-				try {
-					String line = reader.readLine();
-					if ("stop".equals(line)) {
-						isExit = true;
-						break;
-					}
-
-					price = Float.parseFloat(line);
-					inputCorrect = true;
-
-					if (price < 0) {
-						inputCorrect = false;
-						throw new InputMismatchException();
-					}
-
-				} catch (NumberFormatException ex) {
-					System.out.println("incorrect input in field \"price\" ");
-
-				} catch (InputMismatchException iaex) {
-					System.out.println("Bad data. Field \"price\" should be greater than zero");
-				}
-			} while (!inputCorrect);
-
-			if (isExit) {
-				break;
-			}
-
+			 
+			 inputCorrect = false;
+			 isExit = false;
+			 
+        	       runner.addType();
+			       if (isExit) { break; }
+			       runner.addName();
+			       if (isExit) { break; }
+			       runner.addQuantity();
+			       if (isExit) { break; }
+			       runner.addPrice();
+			       if (isExit) { break; }
+						
 			Good good = new Good(type, name, quantity, price);
-			warehouse.addGoods(good);
+			warehouse.addGood(good);
+			warehouse.addType(type);
 			System.out.println("Good " + name + " successfully added.");
 		}
-	}
+		}
+	
+	
+public  void addType() throws IOException{
+	
+	do {
+		System.out.print("Input TYPE of good or \"stop\" to end of data input: ");
+		
+          type = reader.readLine();
+						
+			if(type.length() > 36) {
+				System.out.println("incorrect input in field \"TYPE\".Size of type sholud be less than 36 symbols.");
+			}
+			else {
+				inputCorrect = true;
+			}
+			
+			 if  ("stop".equals(type)) {
+				isExit = true;
+				break;
+			}
+					
+	} while (!inputCorrect);
+}
+	
+	public  void addName() throws IOException{
+		
+				inputCorrect = false;
+		do {
+			System.out.print("Input NAME of good or \"stop\" to end of data input: ");
+			
+	          name = reader.readLine();
+							
+				if(name.length() > 36) {
+					System.out.println("incorrect input in field \"NAME\".Size of type sholud be less than 36 symbols.");
+				}
+				else {
+					inputCorrect = true;
+				}
+				
+				 if  ("stop".equals(name)) {
+					isExit = true;
+					break;
+				}
+						
+		} while (!inputCorrect);
 
+	
+	}
+	
+	public void addQuantity() throws IOException {
+		
+		inputCorrect = false;
+	
+		do {
+			System.out.print("Please input QUANTITY of good or \"stop\" to end of data input:  ");
+			try {
+				String line = reader.readLine();
+				if ("stop".equals(line)) {
+					isExit = true;
+					break;
+				}
+
+				quantity = Integer.parseInt(line);
+				
+				if(quantity <= 0) {
+					System.out.println("incorrect input in field \"QUANTITY\".Quantity sholud be greater than zero.");
+				}
+				
+				else {
+				inputCorrect = true;
+				}
+			} catch (NumberFormatException ex) {
+				System.out.println("Incorrect input in field \"QUANTITY\".Input Integer greater than zero");
+			}
+	 } while (!inputCorrect);
+
+}
+	public void addPrice() throws IOException{
+		
+		inputCorrect = false;
+		do {
+			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
+			try {
+				String line = reader.readLine();
+				if ("stop".equals(line)) {
+					isExit = true;
+					break;
+				}
+
+				price = Float.parseFloat(line);
+				
+
+				if(price <= 0) {
+					System.out.println("Incorrect input in field \"PRICE\".Quantity sholud be greater than zero.");
+				}
+				else {
+					inputCorrect = true;
+					}
+
+			} catch (NumberFormatException ex) {
+				System.out.println("Incorrect input in field \"PRICE\".Input number greater than zero");
+			}
+			
+		} while (!inputCorrect);
+
+	}
 }

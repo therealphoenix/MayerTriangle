@@ -10,27 +10,16 @@ import java.util.Set;
 public class Warehouse {
 
 	private List<Good> listOfGoods;
+	private Set<String> setOfTypes;
 
-	public List<Good> getListOfGoods() {
-		return listOfGoods;
-	}
-
-	public void addGoods(Good good) {
-		this.listOfGoods.add(good);
-	}
-
+	
 	public Warehouse() {
 		this.listOfGoods = new ArrayList<>();
+		this.setOfTypes = new HashSet<>();
 	}
 
 	public int getQuantityOfTypes() {
-
-		Set<String> setOfTypes = new HashSet<>();
-
-		for (Good good : this.listOfGoods) {
-			setOfTypes.add(good.getType());
-		}
-		return setOfTypes.size();
+		return this.setOfTypes.size();
 	}
 
 	public int getQuantityOfAllGoods() {
@@ -48,7 +37,7 @@ public class Warehouse {
 		double sumOfprice = 0;
 		int quantityOfAllgoods = 0;
 		
-		if(0 == quantityOfAllgoods ) {
+		if(0 == this.listOfGoods.size() ) {
 			return 0;
 		}
 
@@ -61,31 +50,44 @@ public class Warehouse {
 
 	public Map<String, Float> getAveragePriceForEachType() {
 
-		Set<Good> setOfGoods = new HashSet<>();
+		
 		Map<String, Float> averagePriceMap = new HashMap<>();
 
-		for (Good good : this.listOfGoods) {
-			setOfGoods.add(good);
-		}
-
-		for (Good good : setOfGoods) {
+				for (String type : this.setOfTypes) {
 
 			float sumOfPrice = 0;
 			int quantityOfAllgoods = 0;
 
-			for (Good g : listOfGoods) {
+			for (Good good : this.listOfGoods) {
 
-				if (good.getType().equals(g.getType())) {
-					sumOfPrice = sumOfPrice + g.getPrice();
-					quantityOfAllgoods = quantityOfAllgoods + g.getQuantity();
+				if (type.equals(good.getType())) {
+					sumOfPrice = sumOfPrice + good.getPrice();
+					quantityOfAllgoods = quantityOfAllgoods + good.getQuantity();
 				}
 
 			}
 
-			averagePriceMap.put(good.getType(), (sumOfPrice / quantityOfAllgoods));
+			averagePriceMap.put(type, (sumOfPrice / quantityOfAllgoods));
 		}
 
 		return averagePriceMap;
+	}
+	
+	public List<Good> getListOfGoods() {
+		return listOfGoods;
+	}
+
+	public void addGood(Good good) {
+		this.listOfGoods.add(good);
+	}
+
+	
+	public Set<String> getTypes() {
+		return setOfTypes;
+	}
+
+	public void addType(String type) {
+		this.setOfTypes.add(type);
 	}
 
 }

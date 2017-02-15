@@ -15,8 +15,8 @@ public class PrintHelper {
 
 		else {
 
-			for (Good g : warehouseList) {
-				System.out.println(g);
+			for (Good good : warehouseList) {
+				System.out.println(good);
 			}
 			System.out.println();
 		}
@@ -68,11 +68,12 @@ public class PrintHelper {
 
 			for (Entry<String, Float> entry : averagePriceMap.entrySet()) {
 
-				System.out.print(
+				System.out.println(
 						SEPARATOR + message + entry.getKey() + ": " + entry.getValue());
 			}
 		}
 		System.out.println();
+		
 
 	}
 }
