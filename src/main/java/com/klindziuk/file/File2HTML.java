@@ -26,17 +26,7 @@ public class File2HTML {
 	public final static String TD_OPEN = "<td>";
 	public final static String TD_CLOSE = "</td>";
 
-	public static long folderSize(File directory) {
-		long length = 0;
-		for (File file : directory.listFiles()) {
-			if (file.isFile())
-				length += file.length();
-			else
-				length += folderSize(file);
-		}
-		return length;
-	}
-
+	
 	public static void main(String[] args) throws IOException {
 
 		File folder = new File(".");
@@ -78,9 +68,21 @@ public class File2HTML {
 		writer.write(builder.toString());
 
 		writer.close();
-		File htmlFile = new File("HTMLTable.html");
-		Desktop.getDesktop().browse(htmlFile.toURI());
+		System.out.println("HTML file succesfully created.");
+//		File htmlFile = new File("HTMLTable.html");  // you can try it if your OS is Windows 7
+//		Desktop.getDesktop().browse(htmlFile.toURI());
 
+	}
+	
+	public static long folderSize(File directory) {
+		long length = 0;
+		for (File file : directory.listFiles()) {
+			if (file.isFile())
+				length += file.length();
+			else
+				length += folderSize(file);
+		}
+		return length;
 	}
 	
 }

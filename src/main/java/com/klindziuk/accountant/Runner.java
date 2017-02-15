@@ -141,7 +141,8 @@ public class Runner {
 			if ((line.length() > allowedNumberOfsymbols) 
 					|| ("NaN".equals(line)|| ("-NaN".equals(line) || ("Infinity".equals(line) || ("-Infinity".equals(line))))))
 			{
-				System.out.println("Incorrect input in field.Size sholud be less than " + allowedNumberOfsymbols+ " symbols.Try again:");
+				System.out.println("Incorrect input in field. Size sholud be less than " + allowedNumberOfsymbols+ 
+						" symbols and greater than zero. Try again: ");
 				System.out.print("Input correct data or \"stop\" to end of data input: ");
 			} else {
 				inputCorrect = true;
@@ -171,14 +172,14 @@ public class Runner {
 				number = Float.parseFloat(line);
 				
 				if ((number <= 0) || (number < 1))  {
-					System.out.println("incorrect input in field.Number shoud be greater than zero.Try again:");
+					System.out.println("incorrect input in field. Number shoud be greater than zero.Try again:");
 				}
 
 				else {
 					inputCorrect = true;
 				}
 			} catch (NumberFormatException ex) {
-				System.out.println("Incorrect input in field .Input Number greater than zero");
+				System.out.println("Incorrect input in field. Input Number greater than zero");
 			}
 		} while (!inputCorrect);
 
