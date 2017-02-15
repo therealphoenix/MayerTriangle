@@ -33,6 +33,18 @@ public class PrintHelper {
 		}
 
 	}
+	
+	static void print(String message, String value) {
+
+		if (null == value) {
+			System.out.println("DATA IS NULL");
+		}
+
+		else {
+			System.out.println(SEPARATOR + message  + value);
+		}
+
+	}
 
 	static void print(String message, Map<String, Float> map) {
 

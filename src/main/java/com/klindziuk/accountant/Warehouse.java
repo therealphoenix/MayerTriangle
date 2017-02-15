@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 public class Warehouse {
 
@@ -34,14 +35,15 @@ public class Warehouse {
 		return result;
 	}
 
-	public Map<String, Float> getAveragePriceOfGood() {
+	public String getAveragePriceOfGood(String nameOfGood) {
+		String result = "";
 		
     if(this.setOfNames.size() == 0){
 			
 			return null;
 		}
 		
-		Map<String, Float> averagePriceMap = new HashMap<>();
+		Map<String, Float> averagePriceofGoodMap = new HashMap<>();
 
 				for (String name : this.setOfNames) {
 
@@ -57,10 +59,23 @@ public class Warehouse {
 
 			}
 
-			averagePriceMap.put(name, (sumOfPrice / quantityOfAllgoods));
+			averagePriceofGoodMap.put(name, (sumOfPrice / quantityOfAllgoods));
 		}
-
-		return averagePriceMap;
+				
+				for (Entry<String, Float> entry : averagePriceofGoodMap.entrySet()) {
+					
+                if(nameOfGood.equals(entry.getKey())){
+                	
+                
+					result = entry.getKey() + ": " + entry.getValue();
+				}
+				else { 
+					result = null;
+				}
+				}
+                
+    return result;
+		
 	}
 
 	public Map<String, Float> getAveragePriceForEachType() {
