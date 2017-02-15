@@ -60,7 +60,7 @@ public class PrintHelper {
 
 	static void print(String message, Map<String, Float> averagePriceMap) {
 
-		if (0 == averagePriceMap.size()) {
+		if (0 == averagePriceMap.size() || null == averagePriceMap ) {
 			System.out.println("DATA MAP IS EMPTY");
 		}
 

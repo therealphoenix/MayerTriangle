@@ -50,6 +50,10 @@ public class Warehouse {
 
 	public Map<String, Float> getAveragePriceForEachType() {
 
+		if(this.setOfTypes.size() == 0){
+			
+			return null;
+		}
 		
 		Map<String, Float> averagePriceMap = new HashMap<>();
 
@@ -79,15 +83,8 @@ public class Warehouse {
 
 	public void addGood(Good good) {
 		this.listOfGoods.add(good);
+		this.setOfTypes.add(good.getType());
 	}
-
 	
-	public Set<String> getTypes() {
-		return setOfTypes;
-	}
-
-	public void addType(String type) {
-		this.setOfTypes.add(type);
-	}
-
+	
 }

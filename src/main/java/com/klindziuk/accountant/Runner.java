@@ -123,7 +123,6 @@ private boolean isExit;
 						
 			Good good = new Good(type, name, quantity, price);
 			warehouse.addGood(good);
-			warehouse.addType(type);
 			System.out.println("Good " + name + " successfully added.");
 		}
 		}
