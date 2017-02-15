@@ -149,31 +149,6 @@ public class Runner {
 		return line;
 	}
 
-//	public String addName() throws IOException {
-//
-//		String name = "";
-//		boolean inputCorrect = false;
-//		do {
-//			System.out.print("Input NAME of good or \"stop\" to end of data input: ");
-//			
-//			 name = reader.readLine();
-//			
-//			if (shouldStop(name)) {
-//				isExit = true;
-//				break;
-//			}
-//
-//			if (name.length() > 36) {
-//				System.out.println("incorrect input in field \"NAME\".Size of type sholud be less than 36 symbols.");
-//			} else {
-//				inputCorrect = true;
-//			}
-//			
-//		} while (!inputCorrect);
-//
-//		return name;
-//
-//	}
 
 	public float inputNumber() throws IOException {
 
@@ -207,35 +182,6 @@ public class Runner {
 		return number;
 	}
 
-//	public float addPrice() throws IOException {
-//		float price = 0;
-//		boolean inputCorrect = false;
-//		
-//		do {
-//			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
-//			try {
-//				String line = reader.readLine();
-//				if (shouldStop(line)) {
-//					isExit = true;
-//					break;
-//				}
-//
-//				price = Float.parseFloat(line);
-//
-//				if (price <= 0) {
-//					System.out.println("Incorrect input in field \"PRICE\".Quantity sholud be greater than zero.");
-//				} else {
-//					inputCorrect = true;
-//				}
-//
-//			} catch (NumberFormatException ex) {
-//				System.out.println("Incorrect input in field \"PRICE\".Input number greater than zero");
-//			}
-//
-//		} while (!inputCorrect);
-//
-//		return price;
-//	}
 	
 	boolean shouldStop(String line) {
 	    return "stop".equals(line);
