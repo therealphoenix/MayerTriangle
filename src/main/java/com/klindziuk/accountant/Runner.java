@@ -115,7 +115,7 @@ public class Runner {
 				break;
 			}
 			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
-			float price = (float) runner.inputNumber(15);
+			float price =  runner.inputNumber(15);
 			if (isExit) {
 				break;
 			}
@@ -139,7 +139,7 @@ public class Runner {
 			}
 
 			if (line.length() > allowedNumberOfsymbols) {
-				System.out.println("Incorrect input in field.Size sholud be less than 36 symbols.");
+				System.out.println("Incorrect input in field.Size sholud be less than " + allowedNumberOfsymbols+ " symbols.");
 				System.out.print("Input correct data or \"stop\" to end of data input: ");
 			} else {
 				inputCorrect = true;
