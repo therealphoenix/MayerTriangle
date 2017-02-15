@@ -34,18 +34,6 @@ public class PrintHelper {
 
 	}
 
-	static void print(String message, double value) {
-		if (0 == value) {
-			System.out.println("DATA IS NULL");
-		}
-
-		else {
-			System.out.println(SEPARATOR + message + ": " + value);
-
-		}
-
-	}
-
 	static void print(String message, Map<String, Float> map) {
 
 		if ( null == map || 0 == map.size()) {
@@ -56,10 +44,11 @@ public class PrintHelper {
 
 			for (Entry<String, Float> entry : map.entrySet()) {
 
-				System.out.println(
+				System.out.print(
 						SEPARATOR + message + entry.getKey() + ": " + entry.getValue());
 			}
 		}
+		 System.out.print(SEPARATOR);
 	
 		
 

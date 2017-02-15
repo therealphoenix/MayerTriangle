@@ -11,11 +11,13 @@ public class Warehouse {
 
 	private List<Good> listOfGoods;
 	private Set<String> setOfTypes;
+	private Set<String> setOfNames;
 
 	
 	public Warehouse() {
 		this.listOfGoods = new ArrayList<>();
 		this.setOfTypes = new HashSet<>();
+		this.setOfNames = new HashSet<>();
 	}
 
 	public int getQuantityOfTypes() {
@@ -32,20 +34,33 @@ public class Warehouse {
 		return result;
 	}
 
-	public double getAveragepriceOfAllGoods() {
-
-		double sumOfprice = 0;
-		int quantityOfAllgoods = 0;
+	public Map<String, Float> getAveragePriceOfGood() {
 		
-		if(0 == this.listOfGoods.size() ) {
-			return 0;
+    if(this.setOfNames.size() == 0){
+			
+			return null;
+		}
+		
+		Map<String, Float> averagePriceMap = new HashMap<>();
+
+				for (String name : this.setOfNames) {
+
+			float sumOfPrice = 0;
+			int quantityOfAllgoods = 0;
+
+			for (Good good : this.listOfGoods) {
+
+				if (name.equals(good.getName())) {
+					sumOfPrice = sumOfPrice + good.getPrice();
+					quantityOfAllgoods = quantityOfAllgoods + good.getQuantity();
+				}
+
+			}
+
+			averagePriceMap.put(name, (sumOfPrice / quantityOfAllgoods));
 		}
 
-		for (Good good : this.listOfGoods) {
-			sumOfprice = sumOfprice + good.getPrice();
-			quantityOfAllgoods = quantityOfAllgoods + good.getQuantity();
-		}
-		return (sumOfprice / quantityOfAllgoods);
+		return averagePriceMap;
 	}
 
 	public Map<String, Float> getAveragePriceForEachType() {
@@ -84,6 +99,7 @@ public class Warehouse {
 	public void addGood(Good good) {
 		this.listOfGoods.add(good);
 		this.setOfTypes.add(good.getType());
+		this.setOfNames.add(good.getName());
 	}
 	
 	

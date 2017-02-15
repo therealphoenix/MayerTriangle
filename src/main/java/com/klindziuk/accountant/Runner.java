@@ -73,7 +73,7 @@ public class Runner {
 				PrintHelper.print("Quantity of all goods is: ",warehouse.getQuantityOfAllGoods());
 				break;
 			case 5:
-				PrintHelper.print("Average price of all goods: ", warehouse.getAveragepriceOfAllGoods());
+				PrintHelper.print("Average price of  goods: ", warehouse.getAveragePriceOfGood());
 				break;
 			case 6:
 				PrintHelper.print("Average price for ", warehouse.getAveragePriceForEachType());
@@ -138,8 +138,10 @@ public class Runner {
 				break;
 			}
 
-			if (line.length() > allowedNumberOfsymbols) {
-				System.out.println("Incorrect input in field.Size sholud be less than " + allowedNumberOfsymbols+ " symbols.");
+			if ((line.length() > allowedNumberOfsymbols) 
+					|| ("NaN".equals(line)|| ("-NaN".equals(line) || ("Infinity".equals(line) || ("-Infinity".equals(line))))))
+			{
+				System.out.println("Incorrect input in field.Size sholud be less than " + allowedNumberOfsymbols+ " symbols.Try again:");
 				System.out.print("Input correct data or \"stop\" to end of data input: ");
 			} else {
 				inputCorrect = true;
@@ -168,8 +170,8 @@ public class Runner {
 								 				
 				number = Float.parseFloat(line);
 				
-				if (number <= 0) {
-					System.out.println("incorrect input in field.Number shoud be greater than zero.");
+				if ((number <= 0) || (number < 1))  {
+					System.out.println("incorrect input in field.Number shoud be greater than zero.Try again:");
 				}
 
 				else {
