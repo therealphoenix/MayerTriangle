@@ -5,7 +5,7 @@ public class Good {
 	private String type;
 	private String name;
 	private int quantity;
-	private float price;
+	private float price ;
 
 	public Good(String type, String name, int quantity, float price) {
 		this.type = type;
