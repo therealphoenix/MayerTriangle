@@ -19,21 +19,21 @@ import java.util.Scanner;
  */
 
 public class Runner {
-	
+
 	private static Runner runner;
 	private static BufferedReader reader;
 	private Warehouse warehouse;
 	private boolean isExit;
 
 	public static void main(String[] args) throws IOException {
-		
+
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		runner = new Runner();
 		runner.menu();
-	    	}
+	}
 
 	// main menu
-	private  int menu() throws IOException {
+	private int menu() throws IOException {
 		this.warehouse = new Warehouse();
 
 		Scanner scanner = new Scanner(System.in);
@@ -71,10 +71,10 @@ public class Runner {
 				PrintHelper.print("Quantity of types is: ", warehouse.getQuantityOfTypes());
 				break;
 			case 4:
-				PrintHelper.print("Quantity of all goods is: ",warehouse.getQuantityOfAllGoods());
+				PrintHelper.print("Quantity of all goods is: ", warehouse.getQuantityOfAllGoods());
 				break;
 			case 5:
-				
+
 				PrintHelper.print("Average price of ", warehouse.getAveragePriceOfGood(inputGood()));
 				break;
 			case 6:
@@ -88,7 +88,6 @@ public class Runner {
 			default:
 				System.out.println("Make valid choice!");
 			}
-			
 
 		}
 		scanner.close();
@@ -97,10 +96,9 @@ public class Runner {
 	}
 
 	public void fillWarehouse() throws IOException {
-		
 
 		while (true) {
-			
+
 			isExit = false;
 			System.out.print("Input TYPE of good or \"stop\" to end of data input: ");
 			String type = runner.inputString(36);
@@ -118,7 +116,7 @@ public class Runner {
 				break;
 			}
 			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
-			float price =  runner.inputNumber(15);
+			float price = runner.inputNumber(15);
 			if (isExit) {
 				break;
 			}
@@ -132,30 +130,29 @@ public class Runner {
 	public String inputString(int allowedNumberOfsymbols) throws IOException {
 		String line = "";
 		boolean inputCorrect = false;
-		
+
 		do {
 
-			 line = reader.readLine();
+			line = reader.readLine();
 			if (shouldStop(line)) {
 				isExit = true;
 				break;
 			}
 
 			if ((line.length() > allowedNumberOfsymbols) || ("".equals(line)) || (" ".equals(line))
-					|| ("NaN".equals(line)|| ("-NaN".equals(line) || ("Infinity".equals(line) || ("-Infinity".equals(line))))))
-			{
-				System.out.println("Incorrect input in field. Size sholud be less than " + allowedNumberOfsymbols+ 
-						" symbols and greater than zero. Try again: ");
+					|| ("NaN".equals(line)
+							|| ("-NaN".equals(line) || ("Infinity".equals(line) || ("-Infinity".equals(line)))))) {
+				System.out.println("Incorrect input in field. Size sholud be less than " + allowedNumberOfsymbols
+						+ " symbols and greater than zero. Try again: ");
 				System.out.print("Input correct data or \"stop\" to end of data input: ");
 			} else {
 				inputCorrect = true;
 			}
-			
+
 		} while (!inputCorrect);
 
 		return line;
 	}
-
 
 	public float inputNumber(int allowedNumberOfsymbols) throws IOException {
 
@@ -163,18 +160,18 @@ public class Runner {
 		boolean inputCorrect = false;
 
 		do {
-			
+
 			try {
-				
+
 				String line = inputString(allowedNumberOfsymbols);
 				if (shouldStop(line)) {
 					isExit = true;
 					break;
 				}
-								 				
+
 				number = Float.parseFloat(line);
-				
-				if ((number <= 0) || (number < 1))  {
+
+				if ((number <= 0) || (number < 1)) {
 					System.out.print("incorrect input in field. Number shoud be greater than zero.Try again:");
 				}
 
@@ -189,14 +186,18 @@ public class Runner {
 		return number;
 	}
 
-	
 	boolean shouldStop(String line) {
-	    return "stop".equals(line);
+		return "stop".equals(line);
 	}
-	
-	String inputGood() throws IOException{
+
+	String inputGood() throws IOException {
+
+		if (0 == warehouse.getListOfGoods().size()) {
+			return null;
+		}
 		System.out.print("Please input name of good: ");
+
 		String good = runner.inputString(36);
-	return	good;
+		return good;
 	}
 }

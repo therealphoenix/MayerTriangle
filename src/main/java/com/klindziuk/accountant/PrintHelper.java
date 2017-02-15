@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class PrintHelper {
-	
+
 	public static final String SEPARATOR = System.getProperty("line.separator");
-	
+
 	static void print(List<Good> list) {
-		if ((null == list) ||  0 == list.size() ) {
+		if ((null == list) || 0 == list.size()) {
 			System.out.println("DATA LIST IS EMPTY.");
 		}
 
@@ -29,11 +29,11 @@ public class PrintHelper {
 		}
 
 		else {
-			System.out.println(SEPARATOR + message + ": "  + value);
+			System.out.println(SEPARATOR + message + ": " + value);
 		}
 
 	}
-	
+
 	static void print(String message, String value) {
 
 		if (null == value) {
@@ -41,14 +41,14 @@ public class PrintHelper {
 		}
 
 		else {
-			System.out.println(SEPARATOR + message  + value);
+			System.out.println(SEPARATOR + message + value);
 		}
 
 	}
 
 	static void print(String message, Map<String, Float> map) {
 
-		if ( null == map || 0 == map.size()) {
+		if (null == map || 0 == map.size()) {
 			System.out.println("DATA MAP IS EMPTY");
 		}
 
@@ -56,13 +56,10 @@ public class PrintHelper {
 
 			for (Entry<String, Float> entry : map.entrySet()) {
 
-				System.out.print(
-						SEPARATOR + message + entry.getKey() + ": " + entry.getValue());
+				System.out.print(SEPARATOR + message + entry.getKey() + ": " + entry.getValue());
 			}
 		}
-		 System.out.print(SEPARATOR);
-	
-		
+		System.out.print(SEPARATOR);
 
 	}
 }

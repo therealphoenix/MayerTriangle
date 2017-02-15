@@ -14,7 +14,6 @@ public class Warehouse {
 	private Set<String> setOfTypes;
 	private Set<String> setOfNames;
 
-	
 	public Warehouse() {
 		this.listOfGoods = new ArrayList<>();
 		this.setOfTypes = new HashSet<>();
@@ -36,16 +35,16 @@ public class Warehouse {
 	}
 
 	public String getAveragePriceOfGood(String nameOfGood) {
-		String result = "";
-		
-    if(this.setOfNames.size() == 0){
-			
+		String result = null;
+
+		if (this.setOfNames.size() == 0) {
+
 			return null;
 		}
-		
-		Map<String, Float> averagePriceofGoodMap = new HashMap<>();
 
-				for (String name : this.setOfNames) {
+		Map<String, Float> averagePriceoFGoodMap = new HashMap<>();
+
+		for (String name : this.setOfNames) {
 
 			float sumOfPrice = 0;
 			int quantityOfAllgoods = 0;
@@ -58,36 +57,34 @@ public class Warehouse {
 				}
 
 			}
+			averagePriceoFGoodMap.put(name, (sumOfPrice / quantityOfAllgoods));
 
-			averagePriceofGoodMap.put(name, (sumOfPrice / quantityOfAllgoods));
 		}
-				
-				for (Entry<String, Float> entry : averagePriceofGoodMap.entrySet()) {
-					
-                if(nameOfGood.equals(entry.getKey())){
-                	
-                
-					result = entry.getKey() + ": " + entry.getValue();
-				}
-				else { 
-					result = null;
-				}
-				}
-                
-    return result;
-		
+
+		for (Entry<String, Float> entry : averagePriceoFGoodMap.entrySet()) {
+
+			if (entry.getKey().equals(nameOfGood)) {
+
+				result = entry.getKey() + ": " + entry.getValue();
+
+			}
+
+		}
+
+		return result;
+
 	}
 
 	public Map<String, Float> getAveragePriceForEachType() {
 
-		if(this.setOfTypes.size() == 0){
-			
+		if (this.setOfTypes.size() == 0) {
+
 			return null;
 		}
-		
+
 		Map<String, Float> averagePriceMap = new HashMap<>();
 
-				for (String type : this.setOfTypes) {
+		for (String type : this.setOfTypes) {
 
 			float sumOfPrice = 0;
 			int quantityOfAllgoods = 0;
@@ -106,7 +103,7 @@ public class Warehouse {
 
 		return averagePriceMap;
 	}
-	
+
 	public List<Good> getListOfGoods() {
 		return listOfGoods;
 	}
@@ -116,6 +113,5 @@ public class Warehouse {
 		this.setOfTypes.add(good.getType());
 		this.setOfNames.add(good.getName());
 	}
-	
-	
+
 }
