@@ -70,7 +70,7 @@ public class Runner {
 				PrintHelper.print("Quantity of types is: ", warehouse.getQuantityOfTypes());
 				break;
 			case 4:
-				PrintHelper.print(warehouse.getQuantityOfAllGoods(), "Quantity of all goods is: ");
+				PrintHelper.print("Quantity of all goods is: ",warehouse.getQuantityOfAllGoods());
 				break;
 			case 5:
 				PrintHelper.print("Average price of all goods: ", warehouse.getAveragepriceOfAllGoods());

@@ -8,14 +8,14 @@ public class PrintHelper {
 	
 	public static final String SEPARATOR = System.getProperty("line.separator");
 	
-	static void print(List<Good> warehouseList) {
-		if ((null == warehouseList) ||  0 == warehouseList.size() ) {
+	static void print(List<Good> list) {
+		if ((null == list) ||  0 == list.size() ) {
 			System.out.println("DATA LIST IS EMPTY.");
 		}
 
 		else {
 
-			for (Good good : warehouseList) {
+			for (Good good : list) {
 				System.out.println(good);
 			}
 			System.out.println();
@@ -34,18 +34,6 @@ public class PrintHelper {
 
 	}
 
-	static void print(int value, String message) {
-
-		if (0 == value) {
-			System.out.println("DATA IS NULL");
-		}
-
-		else {
-			System.out.println(SEPARATOR + message + ": " + value);
-
-		}
-	}
-
 	static void print(String message, double value) {
 		if (0 == value) {
 			System.out.println("DATA IS NULL");
@@ -58,15 +46,15 @@ public class PrintHelper {
 
 	}
 
-	static void print(String message, Map<String, Float> averagePriceMap) {
+	static void print(String message, Map<String, Float> map) {
 
-		if ( null == averagePriceMap || 0 == averagePriceMap.size()) {
+		if ( null == map || 0 == map.size()) {
 			System.out.println("DATA MAP IS EMPTY");
 		}
 
 		else {
 
-			for (Entry<String, Float> entry : averagePriceMap.entrySet()) {
+			for (Entry<String, Float> entry : map.entrySet()) {
 
 				System.out.println(
 						SEPARATOR + message + entry.getKey() + ": " + entry.getValue());
