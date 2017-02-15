@@ -54,7 +54,7 @@ public class Runner {
 				System.out.println("Sorry,only numbers allowed.");
 			}
 
-			try {
+			
 				switch (selection) {
 
 				case 1:
@@ -84,12 +84,7 @@ public class Runner {
 					System.out.println("Make valid choice!");
 				}
 
-			} catch (IllegalArgumentException iaex) {
-				System.out.println("Bad data. Field \"quantity\" should be greater than zero");
-			} catch (InputMismatchException iaex) {
-				System.out.println("Bad data. Field \"price\" should be greater than zero");
-			}
-
+			
 		}
 		scanner.close();
 		return selection;
