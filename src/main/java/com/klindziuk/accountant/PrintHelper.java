@@ -22,37 +22,37 @@ public class PrintHelper {
 		}
 	}
 
-	static void print(String message, int quantityOFTypes) {
+	static void print(String message, int value) {
 
-		if (0 == quantityOFTypes) {
+		if (0 == value) {
 			System.out.println("DATA IS NULL");
 		}
 
 		else {
-			System.out.println(SEPARATOR + message + ": "  + quantityOFTypes);
+			System.out.println(SEPARATOR + message + ": "  + value);
 		}
 
 	}
 
-	static void print(int quantityOfAllGoods, String message) {
+	static void print(int value, String message) {
 
-		if (0 == quantityOfAllGoods) {
+		if (0 == value) {
 			System.out.println("DATA IS NULL");
 		}
 
 		else {
-			System.out.println(SEPARATOR + message + ": " + quantityOfAllGoods);
+			System.out.println(SEPARATOR + message + ": " + value);
 
 		}
 	}
 
-	static void print(String message, double averagePriceOfAllGoods) {
-		if (0 == averagePriceOfAllGoods) {
+	static void print(String message, double value) {
+		if (0 == value) {
 			System.out.println("DATA IS NULL");
 		}
 
 		else {
-			System.out.println(SEPARATOR + message + ": " + averagePriceOfAllGoods);
+			System.out.println(SEPARATOR + message + ": " + value);
 
 		}
 

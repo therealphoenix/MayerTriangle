@@ -110,12 +110,12 @@ public class Runner {
 				break;
 			}
 			System.out.print("Please input QUANTITY of good or \"stop\" to end of data input:  ");
-			int quantity = (int) runner.inputNumber();
+			int quantity = (int) runner.inputNumber(15);
 			if (isExit) {
 				break;
 			}
 			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
-			float price = (float) runner.inputNumber();
+			float price = (float) runner.inputNumber(15);
 			if (isExit) {
 				break;
 			}
@@ -132,15 +132,15 @@ public class Runner {
 		
 		do {
 
-			line = reader.readLine();
+			 line = reader.readLine();
 			if (shouldStop(line)) {
 				isExit = true;
 				break;
 			}
 
 			if (line.length() > allowedNumberOfsymbols) {
-				System.out.println("Incorrect input in field.Size of type sholud be less than 36 symbols.");
-				System.out.print("Input TYPE of good or \"stop\" to end of data input: ");
+				System.out.println("Incorrect input in field.Size sholud be less than 36 symbols.");
+				System.out.print("Input correct data or \"stop\" to end of data input: ");
 			} else {
 				inputCorrect = true;
 			}
@@ -151,7 +151,7 @@ public class Runner {
 	}
 
 
-	public float inputNumber() throws IOException {
+	public float inputNumber(int allowedNumberOfsymbols) throws IOException {
 
 		float number = 0f;
 		boolean inputCorrect = false;
@@ -160,14 +160,14 @@ public class Runner {
 			
 			try {
 				
-				String line = reader.readLine();
+				String line = inputString(allowedNumberOfsymbols);
 				if (shouldStop(line)) {
 					isExit = true;
 					break;
 				}
-				
+								 				
 				number = Float.parseFloat(line);
-
+				
 				if (number <= 0) {
 					System.out.println("incorrect input in field.Number shoud be greater than zero.");
 				}
