@@ -114,6 +114,7 @@ public class Runner {
 			if (isExit) {
 				break;
 			}
+			System.out.print("Please input PRICE of good or \"stop\" to end of data input:  ");
 			float price = (float) runner.inputNumber();
 			if (isExit) {
 				break;
@@ -164,7 +165,7 @@ public class Runner {
 					isExit = true;
 					break;
 				}
-
+				
 				number = Float.parseFloat(line);
 
 				if (number <= 0) {
