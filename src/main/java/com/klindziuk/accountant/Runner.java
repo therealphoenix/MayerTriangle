@@ -20,15 +20,14 @@ import java.util.Scanner;
 
 public class Runner {
 
-	private static Runner runner;
-	private static BufferedReader reader;
+	private final static Runner runner = new Runner();
+	private final static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private Warehouse warehouse;
 	private boolean isExit;
 
 	public static void main(String[] args) throws IOException {
 
-		reader = new BufferedReader(new InputStreamReader(System.in));
-		runner = new Runner();
+		
 		runner.menu();
 	}
 
@@ -48,7 +47,7 @@ public class Runner {
 			System.out.println("[2] View all goods");
 			System.out.println("[3] View quantity of types");
 			System.out.println("[4] View quantity of all goods");
-			System.out.println("[5] View average price good");
+			System.out.println("[5] View average price of good");
 			System.out.println("[6] View average price for each type of goods");
 			System.out.println("[0] Quit");
 			System.out.print("Choice: ");
@@ -82,6 +81,7 @@ public class Runner {
 				break;
 			case 0:
 				System.out.println("See you later!");
+				reader.close();
 				System.exit(0);
 				break;
 
